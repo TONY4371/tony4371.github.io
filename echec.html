@@ -1,64 +1,35 @@
 <!doctype html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Paiement annulé — DPO-Lite</title>
-  <meta name="description" content="Le paiement a été annulé. Vous pouvez réessayer ou nous contacter.">
-  <link rel="icon" href="/assets/img/logo-32.png" sizes="32x32">
-  <meta name="theme-color" content="#0b1220">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paiement annulé</title>
+  <meta name="robots" content="noindex">
   <style>
-    :root{--bg:#0b1220;--card:#121a2a;--muted:#9fb0c6;--text:#e6edf6;--accent:#3b82f6;--radius:20px;--shadow:0 10px 30px rgba(0,0,0,.35),0 1px 0 rgba(255,255,255,.04) inset}
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;color:var(--text);background:
-      radial-gradient(1200px 800px at 20% -10%, rgba(59,130,246,.15), transparent 55%),
-      radial-gradient(1000px 700px at 115% 20%, rgba(59,130,246,.10), transparent 60%),
-      var(--bg)}
-    header,footer,main{width:min(1100px,92vw);margin-inline:auto}
-    header{display:flex;align-items:center;gap:14px;padding:22px 0}
-    header img{width:28px;height:28px;border-radius:8px}
-    .brand{font-weight:700}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;margin-top:40px}
-    .muted{color:var(--muted)}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;background:linear-gradient(180deg,#3b82f6,#2563eb);
-      color:#fff;border:0;border-radius:14px;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(59,130,246,.35),0 1px 0 rgba(255,255,255,.08) inset}
-    .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.16)}
-    footer{padding:30px 0 50px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:14px}
-    footer a{color:var(--muted);text-decoration:none}
-    nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+    :root{--bg:#0b1220;--card:#0f172a;--muted:#94a3b8;--txt:#e2e8f0}
+    body{margin:0;background:radial-gradient(1200px 800px at 20% -10%,#12203a 0%,#0b1220 60%),var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    .wrap{max-width:880px;margin:24px auto;padding:24px}
+    a{color:#7dd3fc;text-decoration:none}
+    .card{background:rgba(15,23,42,.9);border:1px solid rgba(148,163,184,.15);border-radius:14px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    h1{margin:0 0 8px;font-size:28px}
+    p{margin:6px 0 0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}
+    .btn{display:inline-block;text-align:center;padding:12px 16px;border-radius:10px;font-weight:700}
+    .btn-primary{background:#38bdf8;color:#0b1220}
+    .btn-ghost{background:transparent;border:1px solid rgba(148,163,184,.25);color:#e2e8f0}
   </style>
 </head>
 <body>
-  <header>
-    <img src="/assets/img/logo-32.png" alt="DPO-Lite"><div class="brand">DPO-Lite</div>
-    <div style="flex:1"></div>
-    <nav>
-      <a href="/">Accueil</a>
-      <a href="/legal/conditions.html">Conditions</a>
-      <a href="/legal/confidentialite.html">Confidentialité</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="card">
-      <h1 style="margin:0 0 8px">Paiement annulé</h1>
-      <p class="muted" style="margin:0 0 14px">
-        Aucune transaction n’a été effectuée. Vous pouvez réessayer ou nous écrire si besoin d’aide.
-      </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" href="/">← Retour à l’accueil</a>
-        <a class="btn secondary" href="mailto:support@dpolite.ca">Contacter le support</a>
+  <div class="wrap">
+    <a href="/">← Retour à l’accueil</a>
+    <div class="card" style="margin-top:12px">
+      <h1>Paiement annulé</h1>
+      <p>Vous pouvez réessayer quand vous voulez.</p>
+      <div class="grid">
+        <a class="btn btn-primary" href="https://buy.stripe.com/6oU9AV7KDetn3nBbdgfIs00" target="_blank" rel="noopener">Réessayer — Essentiel</a>
+        <a class="btn btn-ghost" href="https://buy.stripe.com/14A3cx3un1GBe2f5SWfIs01" target="_blank" rel="noopener">Réessayer — Mise en place</a>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© 2025 DPO-Lite — Québec, QC</span>
-    <div style="flex:1"></div>
-    <a href="/legal/conditions.html">Conditions</a> ·
-    <a href="/legal/confidentialite.html">Confidentialité</a> ·
-    <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
-  </footer>
+    </div>
+  </div>
 </body>
 </html>
