@@ -3,107 +3,134 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DPO-Lite — Conformité CASL & Loi 25</title>
-  <meta name="description" content="DPO-Lite : mise en place et abonnement Essentiel (CASL & Loi 25). Paiements sécurisés par Stripe." />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <title>DPO-Lite – Conformité CASL & Loi 25</title>
+  <meta name="description" content="Conformité CASL & Loi 25 simple et efficace : forfait d’implantation unique + abonnement Essentiel. Paiements sécurisés par Stripe." />
+  <link rel="canonical" href="https://dpolite.ca/">
+  <link rel="icon" href="/favicon.ico">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="DPO-Lite – Conformité CASL & Loi 25" />
+  <meta property="og:description" content="Forfait d’implantation + abonnement Essentiel. Paiements sécurisés par Stripe." />
+  <meta property="og:url" content="https://dpolite.ca/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <style>
     :root{
-      --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#94a3b8;
-      --brand:#525f7f; --accent:#3b82f6;
+      --bg:#0b1220; --panel:#121a2b; --text:#e7edf6; --muted:#9fb0c8;
+      --accent:#5b8cff; --accent-2:#6fe3ff; --border:#24314a; --ok:#3ad2a2;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
-         background:linear-gradient(180deg,#0b1220,#0f172a 40%);color:var(--text)}
-    header,footer{max-width:980px;margin:auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{font-weight:700;letter-spacing:.2px}
-    nav a{color:var(--muted);text-decoration:none;margin-left:16px}
-    nav a:hover{color:#fff}
-    .hero{max-width:980px;margin:12px auto 24px;padding:0 24px}
-    .hero h1{margin:.2em 0 .3em;font-size:clamp(28px,3.5vw,40px)}
-    .hero p{color:var(--muted);max-width:780px}
-    .grid{max-width:980px;margin:12px auto 48px;display:grid;gap:18px;padding:0 24px;
-          grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:22px;
-          box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    .price{font-weight:800;font-size:28px;margin:.2em 0}
-    .muted{color:var(--muted);font-size:14px}
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    /* Header */
+    header{position:sticky;top:0;background:rgba(11,18,32,.7);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:10}
+    nav{max-width:1080px;margin:auto;display:flex;align-items:center;gap:20px;padding:14px 20px}
+    .brand{font-weight:800;letter-spacing:.2px}
+    nav a{color:var(--text)}
+    nav .spacer{flex:1}
+    /* Layout */
+    .wrap{max-width:1080px;margin:auto;padding:0 20px}
+    .hero{padding:40px 0 10px}
+    h1{font-size:2.2rem;line-height:1.2;margin:10px 0 8px}
+    .lead{color:var(--muted);max-width:820px}
+    /* Cards */
+    .grid{display:grid;grid-template-columns:1fr;gap:22px;margin:30px 0 10px}
+    @media (min-width:880px){ .grid{grid-template-columns:1fr 1fr;} }
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:22px}
+    .card h2{margin:0 0 8px;font-size:1.1rem;color:var(--muted);font-weight:700;letter-spacing:.2px}
+    .price{font-size:2rem;font-weight:800;margin:6px 0 12px}
+    .per{font-size:1rem;color:var(--muted);margin-left:6px}
+    ul{margin:10px 0 18px;padding-left:20px}
+    li+li{margin-top:6px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
-         padding:12px 16px;border-radius:12px;border:1px solid #334155;
-         background:linear-gradient(180deg,var(--brand),#3d4a62);
-         color:#fff;text-decoration:none;font-weight:600;margin-top:14px;
-         transition:.15s transform ease,.15s filter ease}
-    .btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
-    .features{margin:12px 0 0;padding-left:18px}
-    .features li{margin:.35em 0;color:var(--muted)}
-    footer{border-top:1px solid #1f2937;font-size:14px;color:var(--muted);
-           display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
-    footer a{color:var(--muted);text-decoration:none}
-    footer a:hover{color:#fff}
+         background:linear-gradient(135deg,var(--accent),var(--accent-2));
+         color:#0b1220;font-weight:800;border:none;border-radius:12px;padding:12px 18px}
+    .btn:hover{text-decoration:none;filter:saturate(1.1) brightness(1.03)}
+    .note{color:var(--muted);font-size:.95rem;margin-top:10px}
+    .ok{color:var(--ok);font-weight:700}
+    /* Footer */
+    footer{color:var(--muted);border-top:1px solid var(--border);margin:40px 0 60px}
+    footer .wrap{padding-top:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    footer a{color:var(--muted)}
+    footer a:hover{color:var(--text)}
+    /* Small labels */
+    .pill{display:inline-block;font-size:.75rem;color:#101626;background:#1a2740;border:1px solid var(--border);padding:4px 8px;border-radius:999px}
+    .nav-links a{padding:6px 10px;border-radius:8px}
+    .nav-links a:hover{background:#0f182a}
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">DPO-Lite</div>
-    <nav>
+
+<header>
+  <nav class="wrap" aria-label="Navigation principale">
+    <a class="brand" href="/">DPO-Lite</a>
+    <div class="spacer"></div>
+    <div class="nav-links">
       <a href="#offres">Offres</a>
       <a href="mailto:support@dpolite.ca">Contact</a>
       <a href="/legal/conditions.html">Conditions</a>
       <a href="/legal/confidentialite.html">Confidentialité</a>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Conformité CASL & Loi&nbsp;25 — simple, claire, efficace</h1>
-    <p>
-      Mise en place en bonne et due forme (SPF/DKIM/DMARC, registres, checklists) et
-      abonnement Essentiel pour votre conformité continue. Paiements sécurisés par Stripe.
+<main class="wrap">
+  <section class="hero" id="offres">
+    <span class="pill">CASL • Loi 25 • e-mail sécurité</span>
+    <h1>Conformité CASL & Loi 25 — simple, claire, efficace</h1>
+    <p class="lead">
+      Mise en place en bonne et due forme (SPF/DKIM/DMARC, registres, checklists) et abonnement
+      Essentiel pour votre conformité continue. <span class="ok">Paiements sécurisés par Stripe.</span>
     </p>
   </section>
 
-  <section id="offres" class="grid">
-    <!-- Offre 1 : Mise en place (ponctuel) -->
-    <article class="card">
-      <h3>Mise en place (forfait initial)</h3>
-      <div class="price">300,00&nbsp;$</div>
-      <ul class="features">
+  <section class="grid" aria-label="Offres">
+    <!-- Forfait mise en place -->
+    <article class="card" aria-labelledby="titre-setup">
+      <h2 id="titre-setup">Mise en place (forfait initial)</h2>
+      <div class="price">300,00 $</div>
+      <ul>
         <li>Cadrage initial & checklists CASL & Loi 25</li>
         <li>Configuration registres + alerte e-mail (SPF/DKIM/DMARC)</li>
         <li>Evidence Vault (PDF + hash) inclus</li>
       </ul>
-      <a class="btn"
-         href="https://buy.stripe.com/14A3cx3un1GBe2f5SWfIs01"
-         target="_blank" rel="noopener">
+
+      <a class="btn" href="https://buy.stripe.com/14A3cx3un1GBe2f5SWfIs01" target="_blank" rel="noopener">
         Payer la mise en place
       </a>
     </article>
 
-    <!-- Offre 2 : Abonnement mensuel -->
-    <article class="card">
-      <h3>Essentiel (CASL & Loi 25)</h3>
-      <div class="price">300,00&nbsp;$/mois</div>
-      <ul class="features">
+    <!-- Abonnement essentiel -->
+    <article class="card" aria-labelledby="titre-essentiel">
+      <h2 id="titre-essentiel">Essentiel (CASL & Loi 25)</h2>
+      <div class="price">300,00 $<span class="per">/mois</span></div>
+      <ul>
         <li>Rapport mensuel “Evidence Vault” (PDF + SHA-256)</li>
         <li>Registre des consentements (MAJ mensuelle)</li>
         <li>Surveillance e-mail + support (≤ 3 demandes / mois)</li>
       </ul>
-      <a class="btn"
-         href="https://buy.stripe.com/6oU9AV7KDetn3nBbdgfIs00"
-         target="_blank" rel="noopener">
+
+      <a class="btn" href="https://buy.stripe.com/6oU9AV7KDetn3nBbdgfIs00" target="_blank" rel="noopener">
         S’abonner maintenant
       </a>
-      <p class="muted">Paiement en 5&nbsp;x 55&nbsp;$ via Klarna (si éligible).</p>
+      <p class="note">Paiement en 5 × 55 $ via Klarna (si éligible).</p>
     </article>
   </section>
+</main>
 
-  <footer>
-    <div>© <span id="y"></span> DPO-Lite — Québec, QC</div>
-    <div>
-      <a href="/legal/conditions.html">Conditions</a> ·
-      <a href="/legal/confidentialite.html">Confidentialité</a> ·
-      <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
-    </div>
-  </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> DPO-Lite — Québec, QC •
+    <a href="/legal/conditions.html">Conditions</a> •
+    <a href="/legal/confidentialite.html">Confidentialité</a> •
+    <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
