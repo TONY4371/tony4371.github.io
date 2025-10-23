@@ -3,64 +3,107 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DPO-Lite – Conformité CASL & Loi 25</title>
-  <meta name="description" content="DPO-Lite — Forfaits de conformité (CASL & Loi 25), mise en place et abonnement. Paiement en ligne sécurisé via Stripe." />
+  <title>DPO-Lite — Conformité CASL & Loi 25</title>
+  <meta name="description" content="DPO-Lite : mise en place et abonnement Essentiel (CASL & Loi 25). Paiements sécurisés par Stripe." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   <style>
     :root{
       --bg:#0f172a; --card:#111827; --text:#e5e7eb; --muted:#94a3b8;
-      --brand:#525f7f; --accent:#3b82f6; --ok:#10b981;
+      --brand:#525f7f; --accent:#3b82f6;
     }
-    *{box-sizing:border-box} body{margin:0;font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;background:var(--bg);color:var(--text)}
-    .wrap{max-width:960px;margin:auto;padding:32px}
-    header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
-    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#384560);display:grid;place-items:center;color:white;font-weight:700}
-    h1{margin:0;font-size:1.35rem}
-    .card{background:var(--card);border:1px solid #1f2937;border-radius:14px;padding:22px;margin:18px 0}
-    .grid{display:grid;gap:16px}
-    @media(min-width:820px){.grid{grid-template-columns:1fr 1fr}}
-    h2{margin:0 0 8px 0;font-size:1.1rem}
-    p{margin:6px 0;color:var(--muted)}
-    .btn{
-      display:inline-block;margin-top:10px;padding:12px 16px;border-radius:10px;text-decoration:none;
-      background:var(--accent);color:white;font-weight:600;transition:transform .06s ease, opacity .2s
-    }
-    .btn:hover{transform:translateY(-1px);opacity:.95}
-    footer{margin-top:24px;color:var(--muted);font-size:.95rem}
-    footer a{color:var(--text);opacity:.9}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+         background:linear-gradient(180deg,#0b1220,#0f172a 40%);color:var(--text)}
+    header,footer{max-width:980px;margin:auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:700;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+    nav a:hover{color:#fff}
+    .hero{max-width:980px;margin:12px auto 24px;padding:0 24px}
+    .hero h1{margin:.2em 0 .3em;font-size:clamp(28px,3.5vw,40px)}
+    .hero p{color:var(--muted);max-width:780px}
+    .grid{max-width:980px;margin:12px auto 48px;display:grid;gap:18px;padding:0 24px;
+          grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:22px;
+          box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .price{font-weight:800;font-size:28px;margin:.2em 0}
+    .muted{color:var(--muted);font-size:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+         padding:12px 16px;border-radius:12px;border:1px solid #334155;
+         background:linear-gradient(180deg,var(--brand),#3d4a62);
+         color:#fff;text-decoration:none;font-weight:600;margin-top:14px;
+         transition:.15s transform ease,.15s filter ease}
+    .btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+    .features{margin:12px 0 0;padding-left:18px}
+    .features li{margin:.35em 0;color:var(--muted)}
+    footer{border-top:1px solid #1f2937;font-size:14px;color:var(--muted);
+           display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
+    footer a{color:var(--muted);text-decoration:none}
+    footer a:hover{color:#fff}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">DP</div>
-      <div>
-        <h1>DPO-Lite — Conformité CASL & Loi 25</h1>
-        <div style="color:var(--muted)">Mise en place rapide + abonnement avec rapports et registres. Paiement sécurisé par Stripe.</div>
-      </div>
-    </header>
+  <header>
+    <div class="brand">DPO-Lite</div>
+    <nav>
+      <a href="#offres">Offres</a>
+      <a href="mailto:support@dpolite.ca">Contact</a>
+      <a href="/legal/conditions.html">Conditions</a>
+      <a href="/legal/confidentialite.html">Confidentialité</a>
+    </nav>
+  </header>
 
-    <div class="grid">
-      <section class="card">
-        <h2>Implantation (mise en place) — 300&nbsp;$</h2>
-        <p>Forfait unique : cadrage, checklists CASL & Loi&nbsp;25, configuration des registres et surveillance e-mail (SPF/DKIM/DMARC).</p>
-        <a class="btn" href="https://buy.stripe.com/XXXX-IMPLANTATION" target="_blank" rel="noopener">Payer l’implantation</a>
-      </section>
+  <section class="hero">
+    <h1>Conformité CASL & Loi&nbsp;25 — simple, claire, efficace</h1>
+    <p>
+      Mise en place en bonne et due forme (SPF/DKIM/DMARC, registres, checklists) et
+      abonnement Essentiel pour votre conformité continue. Paiements sécurisés par Stripe.
+    </p>
+  </section>
 
-      <section class="card">
-        <h2>Essentiel (CASL & Loi 25) — 300&nbsp;$/mois</h2>
-        <p>Rapport mensuel Evidence&nbsp;Vault (PDF + hash SHA-256), registres & incidents, 1 domaine surveillé, support e-mail &lt;= 3 demandes/mois.</p>
-        <a class="btn" href="https://buy.stripe.com/YYYY-ESSENTIEL" target="_blank" rel="noopener">S’abonner</a>
-      </section>
+  <section id="offres" class="grid">
+    <!-- Offre 1 : Mise en place (ponctuel) -->
+    <article class="card">
+      <h3>Mise en place (forfait initial)</h3>
+      <div class="price">300,00&nbsp;$</div>
+      <ul class="features">
+        <li>Cadrage initial & checklists CASL & Loi 25</li>
+        <li>Configuration registres + alerte e-mail (SPF/DKIM/DMARC)</li>
+        <li>Evidence Vault (PDF + hash) inclus</li>
+      </ul>
+      <a class="btn"
+         href="https://buy.stripe.com/14A3cx3un1GBe2f5SWfIs01"
+         target="_blank" rel="noopener">
+        Payer la mise en place
+      </a>
+    </article>
+
+    <!-- Offre 2 : Abonnement mensuel -->
+    <article class="card">
+      <h3>Essentiel (CASL & Loi 25)</h3>
+      <div class="price">300,00&nbsp;$/mois</div>
+      <ul class="features">
+        <li>Rapport mensuel “Evidence Vault” (PDF + SHA-256)</li>
+        <li>Registre des consentements (MAJ mensuelle)</li>
+        <li>Surveillance e-mail + support (≤ 3 demandes / mois)</li>
+      </ul>
+      <a class="btn"
+         href="https://buy.stripe.com/6oU9AV7KDetn3nBbdgfIs00"
+         target="_blank" rel="noopener">
+        S’abonner maintenant
+      </a>
+      <p class="muted">Paiement en 5&nbsp;x 55&nbsp;$ via Klarna (si éligible).</p>
+    </article>
+  </section>
+
+  <footer>
+    <div>© <span id="y"></span> DPO-Lite — Québec, QC</div>
+    <div>
+      <a href="/legal/conditions.html">Conditions</a> ·
+      <a href="/legal/confidentialite.html">Confidentialité</a> ·
+      <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
     </div>
-
-    <footer>
-      <div>© <span id="y"></span> DPO-Lite. Tous droits réservés.</div>
-      <div>
-        <a href="/legal/terms.html">Conditions d’utilisation</a> ·
-        <a href="/legal/privacy.html">Politique de confidentialité</a>
-      </div>
-    </footer>
-  </div>
+  </footer>
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
