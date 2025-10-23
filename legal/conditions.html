@@ -1,146 +1,102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <!-- Icons & PWA -->
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-32.png">
-<link rel="apple-touch-icon" href="/assets/img/logo-180.png">
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0ea5e9">
-<meta name="msapplication-TileColor" content="#0ea5e9">
-
-<!-- Social / Open Graph -->
-<meta property="og:title" content="DPO-Lite — Conformité CASL & Loi 25">
-<meta property="og:description" content="Mise en place + abonnement Essentiel. Paiements sécurisés par Stripe.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dpolite.ca/">
-<meta property="og:image" content="https://dpolite.ca/assets/img/social-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DPO-Lite — Conformité CASL & Loi 25">
-<meta name="twitter:description" content="Mise en place + abonnement Essentiel. Paiements sécurisés par Stripe.">
-<meta name="twitter:image" content="https://dpolite.ca/assets/img/social-card.png">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Conditions d’utilisation — DPO-Lite</title>
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://dpolite.ca/legal/conditions.html">
-
-  <!-- SEO -->
-  <meta name="description"
-        content="Conditions d’utilisation des services DPO-Lite (implantation CASL & Loi 25, abonnement Essentiel, facturation, limitations, droit applicable).">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://dpolite.ca/legal/conditions.html">
-  <meta property="og:title" content="Conditions d’utilisation — DPO-Lite">
-  <meta property="og:description"
-        content="Conditions encadrant l’utilisation des services DPO-Lite.">
-  <meta property="og:site_name" content="DPO-Lite">
-  <!-- <meta property="og:image" content="https://dpolite.ca/social-card.png"> -->
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- <meta name="twitter:image" content="https://dpolite.ca/social-card.png"> -->
-
-  <meta name="theme-color" content="#0b1220">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-</head>
+  <meta name="description" content="Conditions d’utilisation des services DPO-Lite." />
+  <link rel="canonical" href="https://dpolite.ca/legal/conditions.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-32.png">
 
   <style>
     :root{
-      --bg:#0b1220; --panel:#121a2b; --text:#e7edf6; --muted:#9fb0c8;
-      --accent:#5b8cff; --accent-2:#6fe3ff; --border:#24314a;
+      --bg:#0b1220;--bg-2:#0e1830;--panel:#121c2e;--text:#eaf1ff;
+      --muted:#a7b2c8;--primary:#4d76d1;--ring:#7fb0ff;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    header{position:sticky;top:0;background:rgba(11,18,32,.7);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-    nav{max-width:1080px;margin:auto;display:flex;align-items:center;gap:20px;padding:14px 20px}
-    nav .brand{font-weight:700;letter-spacing:.2px}
-    nav a{color:var(--text)}
-    main{max-width:900px;margin:40px auto;padding:0 20px}
-    h1{font-size:2rem;margin:0 0 10px}
-    .muted{color:var(--muted);font-size:.95rem;margin:0 0 24px}
-    section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;margin:18px 0}
-    h2{margin:0 0 10px;font-size:1.2rem}
-    footer{max-width:1080px;margin:40px auto 60px;padding:0 20px;color:var(--muted);border-top:1px solid var(--border);padding-top:18px;text-align:center}
-    .back{display:inline-block;margin-top:14px}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0;color:var(--text);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;
+      background:linear-gradient(180deg,var(--bg),var(--bg-2));
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+    a{color:#fff;text-decoration:none} a:hover{opacity:.92}
+    a:focus-visible{outline:3px solid var(--ring);outline-offset:2px;border-radius:8px}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 20px 64px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+    nav{display:flex;gap:16px;color:var(--muted);font-weight:600}
+    nav a{color:var(--muted)} nav a:hover{color:#fff}
+    h1{margin:12px 0 6px;font-size:clamp(26px,4vw,36px)}
+    .muted{color:var(--muted)}
+    .card{background:linear-gradient(170deg,rgba(255,255,255,.03),transparent 60%),var(--panel);
+      border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:18px;margin:18px 0;
+      box-shadow:0 10px 28px rgba(0,0,0,.35)}
+    .back{display:inline-block;margin-top:8px;color:var(--muted)}
+    footer{margin-top:36px;color:var(--muted);font-size:.92rem;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   </style>
 </head>
 <body>
-<header>
-  <nav>
-    <a class="brand" href="/">DPO-Lite</a>
-    <span style="flex:1"></span>
-    <a href="/">Offres</a>
-    <a href="/legal/conditions.html" aria-current="page">Conditions</a>
-    <a href="/legal/confidentialite.html">Confidentialité</a>
-  </nav>
-</header>
+  <div class="wrap">
+    <header>
+      <a href="/" class="brand">← Accueil</a>
+      <nav>
+        <a href="/legal/conditions.html">Conditions</a>
+        <a href="/legal/confidentialite.html">Confidentialité</a>
+      </nav>
+    </header>
 
-<main>
-  <h1>Conditions d’utilisation</h1>
-  <p class="muted">Dernière mise à jour : <strong>23 octobre 2025</strong></p>
+    <h1>Conditions d’utilisation</h1>
+    <p class="muted">Dernière mise à jour : 23 octobre 2025</p>
 
-  <section>
-    <h2>1. Objet</h2>
-    <p>Les présentes conditions encadrent l’utilisation des services DPO-Lite et la
-       relation contractuelle entre vous (« le Client ») et DPO-Lite (« nous »).</p>
-  </section>
+    <section class="card">
+      <h2>1. Objet</h2>
+      <p>Les présentes conditions encadrent l’utilisation des services DPO-Lite et la relation contractuelle entre vous (« le Client ») et DPO-Lite (« nous »).</p>
+    </section>
 
-  <section>
-    <h2>2. Services & paiements</h2>
-    <ul>
-      <li>Les paiements sont traités de façon sécurisée via Stripe.</li>
-      <li>L’offre <em>Implantation (mise en place)</em> est un forfait unique.</li>
-      <li>L’offre <em>Essentiel (CASL & Loi 25)</em> est un abonnement mensuel, reconduit tacitement jusqu’à résiliation.</li>
-    </ul>
-  </section>
+    <section class="card">
+      <h2>2. Services & paiements</h2>
+      <ul>
+        <li>Les paiements sont traités de façon sécurisée via Stripe.</li>
+        <li>L’offre <em>Implantation (mise en place)</em> est un forfait unique.</li>
+        <li>L’offre <em>Essentiel (CASL & Loi 25)</em> est un abonnement mensuel, reconduit tacitement jusqu’à résiliation.</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>3. Annulation & remboursement</h2>
-    <p>Forfait d’implantation : remboursable avant le démarrage effectif de la prestation.
-       Abonnement : résiliable à tout moment, la période entamée reste due.</p>
-  </section>
+    <section class="card">
+      <h2>3. Annulation & remboursement</h2>
+      <p>Forfait d’implantation : remboursable avant le démarrage effectif de la prestation. Abonnement : résiliable à tout moment, la période entamée reste due.</p>
+    </section>
 
-  <section>
-    <h2>4. Obligations du Client</h2>
-    <p>Fournir des informations exactes, collaborer raisonnablement pendant la mise en œuvre,
-       et utiliser les livrables conformément aux lois applicables (CASL, Loi 25, etc.).</p>
-  </section>
+    <section class="card">
+      <h2>4. Obligations du Client</h2>
+      <p>Fournir des informations exactes, collaborer raisonnablement pendant la mise en œuvre, et utiliser les livrables conformément aux lois applicables (CASL, Loi 25, etc.).</p>
+    </section>
 
-  <section>
-    <h2>5. Limitation de responsabilité</h2>
-    <p>Nos services sont fournis « tels quels ». Dans la mesure permise par la loi,
-       notre responsabilité totale est limitée aux montants versés au cours des 12 derniers mois.</p>
-  </section>
+    <section class="card">
+      <h2>5. Limitation de responsabilité</h2>
+      <p>Nos services sont fournis « tels quels ». Dans la mesure permise par la loi, notre responsabilité totale est limitée aux montants versés au cours des 12 derniers mois.</p>
+    </section>
 
-  <section>
-    <h2>6. Données personnelles</h2>
-    <p>Le traitement des données est décrit dans notre <a href="/legal/confidentialite.html">Politique de confidentialité</a>.</p>
-  </section>
+    <section class="card">
+      <h2>6. Données personnelles</h2>
+      <p>Le traitement des données est décrit dans notre <a href="/legal/confidentialite.html">Politique de confidentialité</a>.</p>
+    </section>
 
-  <section>
-    <h2>7. Droit applicable</h2>
-    <p>Ces conditions sont régies par les lois du Québec et du Canada, tribunaux de Québec (QC).</p>
-  </section>
+    <section class="card">
+      <h2>7. Droit applicable</h2>
+      <p>Ces conditions sont régies par les lois du Québec et du Canada, tribunaux de Québec (QC).</p>
+    </section>
 
-  <a class="back" href="/">← Retour à l’accueil</a>
-</main>
+    <a class="back" href="/">← Retour à l’accueil</a>
 
-<footer>
-  © <span id="y"></span> DPO-Lite — Québec, QC •
-  <a href="/legal/conditions.html">Conditions</a> •
-  <a href="/legal/confidentialite.html">Confidentialité</a> •
-  <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
-</footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+    <footer>
+      <span>© 2025 DPO-Lite — Québec, QC</span>
+      <span>
+        <a href="/legal/conditions.html">Conditions</a> ·
+        <a href="/legal/confidentialite.html">Confidentialité</a> ·
+        <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
+      </span>
+    </footer>
+  </div>
 </body>
 </html>
