@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DPO-Lite — Conformité CASL & Loi 25</title>
-  <meta name="description" content="Conformité opérationnelle CASL & Loi 25 pour PME. Evidence Vault mensuel (PDF + hash), registres, surveillance SPF/DKIM/DMARC, paiements sécurisés par Stripe.">
+  <meta name="description" content="Conformité opérationnelle CASL & Loi 25 pour PME. Evidence Vault mensuel (PDF + hash), registres, surveillance SPF/DKIM/DMARC. Paiements sécurisés par Stripe.">
   <link rel="icon" href="/favicon.ico">
   <style>
     :root{
       --bg:#0b1220; --bg2:#12203a; --card:#0f172a; --txt:#e2e8f0; --muted:#94a3b8;
       --line:rgba(148,163,184,.18); --shadow:rgba(0,0,0,.25);
-      --primary:#38bdf8; --ok:#22c55e; --warn:#f59e0b;
-      --radius:16px;
+      --primary:#38bdf8; --ok:#22c55e; --radius:16px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -22,12 +21,9 @@
     }
     a{color:#7dd3fc;text-decoration:none}
     .container{max-width:1080px;margin:0 auto;padding:20px}
-    .nav{
-      display:flex;justify-content:space-between;align-items:center;gap:12px;
-      padding:10px 0;
-    }
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .badge{font-size:12px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:6px 10px}
+    .chip{font-size:12px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:6px 10px}
     .navlinks{display:flex;gap:16px;flex-wrap:wrap;font-weight:600}
     .hero{padding:16px 0 26px}
     h1{font-size:40px;line-height:1.08;margin:10px 0 10px}
@@ -49,30 +45,27 @@
     }
     .btn-primary{background:var(--primary);color:#0b1220}
     .btn-ok{background:var(--ok);color:#0b1220}
-    .btn-ghost{background:transparent;border-color:var(--line);color:var(--txt)}
+    .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
     .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
     .section{padding:24px 0}
     .footer{color:var(--muted);font-size:14px;padding:24px 0;border-top:1px solid var(--line);margin-top:24px}
-    /* FAQ */
-    details{
-      background:rgba(15,23,42,.9); border:1px solid var(--line); border-radius:12px; padding:14px;
-    }
-    details+details{margin-top:12px}
-    summary{cursor:pointer;font-weight:800;outline:none}
-    /* trust badges row */
+    /* Trust + FAQ */
     .trust{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0}
     .pill{font-size:14px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:8px 12px}
-    /* small helper */
+    details{background:rgba(15,23,42,.9);border:1px solid var(--line);border-radius:12px;padding:14px}
+    details+details{margin-top:12px}
+    summary{cursor:pointer;font-weight:800;outline:none}
     .muted{color:var(--muted)}
   </style>
 </head>
 <body>
+  <!-- Nav -->
   <header class="container">
     <nav class="nav" aria-label="Navigation principale">
       <div class="brand">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(56,189,248,.15);border:1px solid var(--line)">🛡️</span>
         <span>DPO-Lite</span>
-        <span class="badge">CASL • Loi 25 • e-mail sécurité</span>
+        <span class="chip">CASL • Loi 25 • e-mail sécurisé</span>
       </div>
       <div class="navlinks">
         <a href="#offres">Offres</a>
@@ -84,6 +77,7 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="container hero">
       <h1>Conformité CASL &amp; Loi 25 —<br> <span style="opacity:.95">simple, claire, efficace</span></h1>
       <p class="lead">
@@ -92,6 +86,7 @@
       </p>
     </section>
 
+    <!-- Offres -->
     <section id="offres" class="container section">
       <div class="cards">
         <!-- Mise en place -->
@@ -134,14 +129,14 @@
       </div>
 
       <!-- Badges de confiance + mini-FAQ -->
-      <div class="trust">
+      <div class="trust" aria-label="Badges de confiance">
         <div class="pill">🔒 Paiements sécurisés par Stripe</div>
-        <div class="pill">💳 Cartes •  Pay • Google Pay</div>
+        <div class="pill">💳 Cartes • Apple Pay • Google Pay • Link</div>
         <div class="pill">📄 Reçus &amp; factures par e-mail</div>
         <div class="pill">✅ Preuves mensuelles (Evidence Vault)</div>
       </div>
 
-      <div>
+      <div aria-label="Mini-FAQ">
         <details>
           <summary>Est-ce un avis juridique&nbsp;?</summary>
           <div class="muted" style="margin-top:8px">
@@ -165,6 +160,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="container section">
       <div class="card">
         <h3>Contact</h3>
