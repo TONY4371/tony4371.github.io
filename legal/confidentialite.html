@@ -1,145 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <!-- Icons & PWA -->
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-32.png">
-<link rel="apple-touch-icon" href="/assets/img/logo-180.png">
-<link rel="manifest" href="/manifest.webmanifest">
-<meta name="theme-color" content="#0ea5e9">
-<meta name="msapplication-TileColor" content="#0ea5e9">
-
-<!-- Social / Open Graph -->
-<meta property="og:title" content="DPO-Lite — Conformité CASL & Loi 25">
-<meta property="og:description" content="Mise en place + abonnement Essentiel. Paiements sécurisés par Stripe.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dpolite.ca/">
-<meta property="og:image" content="https://dpolite.ca/assets/img/social-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DPO-Lite — Conformité CASL & Loi 25">
-<meta name="twitter:description" content="Mise en place + abonnement Essentiel. Paiements sécurisés par Stripe.">
-<meta name="twitter:image" content="https://dpolite.ca/assets/img/social-card.png">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Politique de confidentialité — DPO-Lite</title>
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://dpolite.ca/legal/confidentialite.html">
-
-  <!-- SEO -->
-  <meta name="description"
-        content="Politique de confidentialité DPO-Lite : données collectées, finalités, base légale, conservation, droits des personnes, sous-traitants (Stripe, GitHub Pages).">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://dpolite.ca/legal/confidentialite.html">
-  <meta property="og:title" content="Politique de confidentialité — DPO-Lite">
-  <meta property="og:description"
-        content="Transparence sur la collecte et l’usage de vos données, vos droits et nos sous-traitants.">
-  <meta property="og:site_name" content="DPO-Lite">
-  <!-- <meta property="og:image" content="https://dpolite.ca/social-card.png"> -->
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- <meta name="twitter:image" content="https://dpolite.ca/social-card.png"> -->
-
-  <meta name="theme-color" content="#0b1220">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-</head>
+  <meta name="description" content="Politique de confidentialité de DPO-Lite (données collectées, finalités, conservation, sous-traitants, droits, contact)." />
+  <link rel="canonical" href="https://dpolite.ca/legal/confidentialite.html" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-32.png">
 
   <style>
     :root{
-      --bg:#0b1220; --panel:#121a2b; --text:#e7edf6; --muted:#9fb0c8;
-      --accent:#5b8cff; --accent-2:#6fe3ff; --border:#24314a;
+      --bg:#0b1220;--bg-2:#0e1830;--panel:#121c2e;--text:#eaf1ff;
+      --muted:#a7b2c8;--primary:#4d76d1;--ring:#7fb0ff;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    header{position:sticky;top:0;background:rgba(11,18,32,.7);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-    nav{max-width:1080px;margin:auto;display:flex;align-items:center;gap:20px;padding:14px 20px}
-    nav .brand{font-weight:700;letter-spacing:.2px}
-    nav a{color:var(--text)}
-    main{max-width:900px;margin:40px auto;padding:0 20px}
-    h1{font-size:2rem;margin:0 0 10px}
-    .muted{color:var(--muted);font-size:.95rem;margin:0 0 24px}
-    section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;margin:18px 0}
-    h2{margin:0 0 10px;font-size:1.2rem}
-    footer{max-width:1080px;margin:40px auto 60px;padding:0 20px;color:var(--muted);border-top:1px solid var(--border);padding-top:18px;text-align:center}
-    .back{display:inline-block;margin-top:14px}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0;color:var(--text);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial;
+      background:linear-gradient(180deg,var(--bg),var(--bg-2));
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+    a{color:#fff;text-decoration:none} a:hover{opacity:.92}
+    a:focus-visible{outline:3px solid var(--ring);outline-offset:2px;border-radius:8px}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 20px 64px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+    nav{display:flex;gap:16px;color:var(--muted);font-weight:600}
+    nav a{color:var(--muted)} nav a:hover{color:#fff}
+    h1{margin:12px 0 6px;font-size:clamp(26px,4vw,36px)}
+    .muted{color:var(--muted)}
+    .card{background:linear-gradient(170deg,rgba(255,255,255,.03),transparent 60%),var(--panel);
+      border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:18px;margin:18px 0;
+      box-shadow:0 10px 28px rgba(0,0,0,.35)}
+    .back{display:inline-block;margin-top:8px;color:var(--muted)}
+    footer{margin-top:36px;color:var(--muted);font-size:.92rem;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
   </style>
 </head>
 <body>
-<header>
-  <nav>
-    <a class="brand" href="/">DPO-Lite</a>
-    <span style="flex:1"></span>
-    <a href="/">Offres</a>
-    <a href="/legal/conditions.html">Conditions</a>
-    <a href="/legal/confidentialite.html" aria-current="page">Confidentialité</a>
-  </nav>
-</header>
+  <div class="wrap">
+    <header>
+      <a href="/" class="brand">← Accueil</a>
+      <nav>
+        <a href="/legal/conditions.html">Conditions</a>
+        <a href="/legal/confidentialite.html">Confidentialité</a>
+      </nav>
+    </header>
 
-<main>
-  <h1>Politique de confidentialité</h1>
-  <p class="muted">Dernière mise à jour : <strong>23 octobre 2025</strong></p>
+    <h1>Politique de confidentialité</h1>
+    <p class="muted">Dernière mise à jour : 23 octobre 2025</p>
 
-  <section>
-    <h2>Données que nous collectons</h2>
-    <ul>
-      <li>Coordonnées professionnelles (nom, e-mail, entreprise) fournies via nos formulaires / paiements.</li>
-      <li>Données de paiement traitées par <strong>Stripe</strong> (nous ne stockons pas les numéros de carte).</li>
-      <li>Données techniques minimales (logs) pour sécurité et performance.</li>
-    </ul>
-  </section>
+    <section class="card">
+      <h2>Données que nous collectons</h2>
+      <ul>
+        <li>Données professionnelles (nom, e-mail, entreprise) fournies via formulaires / paiements.</li>
+        <li>Données de paiement traitées par Stripe (nous ne stockons pas les numéros de carte).</li>
+        <li>Données techniques minimales (logs) pour sécurité et performance.</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Finalités & base légale</h2>
-    <ul>
-      <li>Fourniture des services (exécution du contrat).</li>
-      <li>Facturation, support et conformité (obligations légales).</li>
-      <li>Amélioration du service (intérêt légitime, proportionné).</li>
-    </ul>
-  </section>
+    <section class="card">
+      <h2>Finalités & base légale</h2>
+      <ul>
+        <li>Fourniture des services (exécution du contrat).</li>
+        <li>Facturation, support et conformité (obligations légales).</li>
+        <li>Amélioration du service (intérêt légitime, proportionné).</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Conservation</h2>
-    <p>Les données sont conservées le temps nécessaire aux finalités ci-dessus, puis supprimées ou anonymisées selon nos politiques internes.</p>
-  </section>
+    <section class="card">
+      <h2>Conservation</h2>
+      <p>Les données sont conservées le temps nécessaire aux finalités ci-dessus, puis supprimées ou anonymisées selon nos politiques internes.</p>
+    </section>
 
-  <section>
-    <h2>Destinataires / sous-traitants</h2>
-    <ul>
-      <li><strong>Stripe</strong> : paiements sécurisés et facturation.</li>
-      <li><strong>GitHub Pages</strong> : hébergement de dpolite.ca.</li>
-    </ul>
-  </section>
+    <section class="card">
+      <h2>Destinataires / sous-traitants</h2>
+      <ul>
+        <li>Stripe : paiements sécurisés & facturation.</li>
+        <li>GitHub Pages : hébergement de dpolite.ca.</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Vos droits</h2>
-    <p>Vous pouvez exercer vos droits d’accès, rectification, portabilité et suppression
-       (Loi 25 / RGPD) à l’adresse <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.</p>
-  </section>
+    <section class="card">
+      <h2>Vos droits</h2>
+      <p>Vous pouvez exercer vos droits d’accès, rectification, portabilité et suppression (Loi 25 / RGPD) à l’adresse
+        <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.
+      </p>
+    </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>DPO-Lite, Québec (QC) — <a href="mailto:support@dpolite.ca">support@dpolite.ca</a></p>
-  </section>
+    <section class="card">
+      <h2>Contact</h2>
+      <p>DPO-Lite, Québec (QC) — <a href="mailto:support@dpolite.ca">support@dpolite.ca</a></p>
+    </section>
 
-  <a class="back" href="/">← Retour à l’accueil</a>
-</main>
+    <a class="back" href="/">← Retour à l’accueil</a>
 
-<footer>
-  © <span id="y"></span> DPO-Lite — Québec, QC •
-  <a href="/legal/conditions.html">Conditions</a> •
-  <a href="/legal/confidentialite.html">Confidentialité</a> •
-  <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
-</footer>
-<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+    <footer>
+      <span>© 2025 DPO-Lite — Québec, QC</span>
+      <span>
+        <a href="/legal/conditions.html">Conditions</a> ·
+        <a href="/legal/confidentialite.html">Confidentialité</a> ·
+        <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
+      </span>
+    </footer>
+  </div>
 </body>
 </html>
