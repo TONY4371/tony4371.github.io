@@ -6,12 +6,18 @@
   <title>DPO-Lite — Conformité CASL & Loi 25</title>
   <meta name="description" content="Conformité opérationnelle CASL & Loi 25 pour PME. Evidence Vault mensuel (PDF + hash), registres, surveillance SPF/DKIM/DMARC. Paiements sécurisés par Stripe.">
   <meta name="theme-color" content="#0b1220">
-  <!-- Open Graph -->
+
+  <!-- Icons & Social -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/logo-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo-180.png">
+  <link rel="manifest" href="/assets/img/manifest.webmanifest">
   <meta property="og:title" content="DPO-Lite — Conformité CASL & Loi 25">
-  <meta property="og:description" content="Evidence Vault mensuel, registres et surveillance e-mail. Paiements sécurisés par Stripe.">
+  <meta property="og:description" content="Evidence Vault mensuel, registres, surveillance e-mail. Paiements sécurisés par Stripe.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dpolite.ca/">
-  <link rel="icon" href="/favicon.ico">
+  <meta property="og:image" content="/assets/img/social-card.png">
+
   <style>
     :root{
       --bg:#0b1220; --bg2:#12203a; --card:#0f172a; --txt:#e2e8f0; --muted:#94a3b8;
@@ -27,56 +33,83 @@
       scroll-behavior:smooth;
     }
     a{color:#7dd3fc;text-decoration:none}
-    .container{max-width:1080px;margin:0 auto;padding:20px}
-    .nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0}
+    .container{max-width:1080px;margin:0 auto;padding:16px}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .chip{font-size:12px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:6px 10px}
-    .navlinks{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-weight:600}
+    .brand-logo{width:28px;height:28px;border-radius:8px;object-fit:contain;border:1px solid var(--line);background:#0d1a2b}
+    .chip{font-size:11px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:5px 9px}
+    .navlinks{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-weight:600}
     .cta-nav{display:inline-block;padding:8px 12px;border-radius:10px;background:var(--ok);color:#0b1220;font-weight:800}
-    .hero{padding:16px 0 26px}
-    h1{font-size:40px;line-height:1.08;margin:10px 0 10px}
-    .lead{color:var(--muted);max-width:840px}
-    .micro{color:var(--muted);margin-top:8px}
-    .cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
-    @media(min-width:900px){ .cards{grid-template-columns:1fr 1fr} }
-    .card{
-      background:rgba(15,23,42,.9); border:1px solid var(--line); border-radius:var(--radius);
-      padding:22px; box-shadow:0 10px 30px var(--shadow);
-    }
-    .card h3{margin:0 0 8px}
-    .price{font-size:34px;font-weight:900}
-    .per{font-size:16px;color:var(--muted);font-weight:700}
-    ul{margin:12px 0 0 18px}
-    li{margin:8px 0}
-    .btn{
-      display:inline-block; padding:12px 16px; border-radius:12px; font-weight:800; text-align:center;
-      border:1px solid transparent;
-    }
+
+    /* HERO */
+    .hero{padding:12px 0 18px}
+    h1{font-size:clamp(26px, 6vw, 44px);line-height:1.1;margin:8px 0 8px}
+    .lead{color:var(--muted);max-width:840px;font-size:clamp(14px, 2.6vw, 18px)}
+    .micro{color:var(--muted);margin-top:6px;font-size:clamp(13px, 2.4vw, 15px)}
+
+    /* OFFRES */
+    .cards{display:grid;grid-template-columns:1fr;gap:14px;margin-top:16px}
+    .card{background:rgba(15,23,42,.92);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 10px 30px var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:clamp(16px, 3.6vw, 20px)}
+    .price{font-size:clamp(26px, 6.2vw, 34px);font-weight:900}
+    .per{font-size:14px;color:var(--muted);font-weight:700}
+    ul{margin:10px 0 0 18px}
+    li{margin:6px 0}
+    .btn{display:inline-block;padding:12px 14px;border-radius:12px;font-weight:800;text-align:center;border:1px solid transparent;width:100%}
+    .btn + .btn{margin-left:0}
     .btn-primary{background:var(--primary);color:#0b1220}
     .btn-ok{background:var(--ok);color:#0b1220}
     .btn-ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
-    .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
-    .section{padding:24px 0}
-    .footer{color:var(--muted);font-size:14px;padding:24px 0;border-top:1px solid var(--line);margin-top:24px}
-    /* Trust + FAQ */
-    .trust{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0}
-    .pill{font-size:14px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:8px 12px}
-    details{background:rgba(15,23,42,.9);border:1px solid var(--line);border-radius:12px;padding:14px}
-    details+details{margin-top:12px}
-    summary{cursor:pointer;font-weight:800;outline:none}
+    .btn-row{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
     .muted{color:var(--muted)}
-    /* Social counters */
-    .counters{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
-    .counter{background:rgba(15,23,42,.7);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-    .counter strong{font-size:18px}
+    .section{padding:18px 0}
+
+    /* TRUST + FAQ */
+    .trust{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+    .pill{font-size:13px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:7px 10px}
+    details{background:rgba(15,23,42,.9);border:1px solid var(--line);border-radius:12px;padding:12px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:800;outline:none}
+
+    /* COUNTERS */
+    .counters{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .counter{background:rgba(15,23,42,.7);border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:13px}
+    .counter strong{font-size:16px}
+
+    /* CONTACT/FOOTER */
+    .footer{color:var(--muted);font-size:13px;padding:18px 0;border-top:1px solid var(--line);margin-top:18px}
+
+    /* DESKTOP TWEAKS */
+    @media(min-width:900px){
+      .container{padding:20px}
+      .nav{flex-wrap:nowrap}
+      .chip{font-size:12px}
+      .brand-logo{width:32px;height:32px;border-radius:10px}
+      .cards{grid-template-columns:1fr 1fr;gap:16px}
+      .btn{width:auto}
+      .btn-row{grid-template-columns:auto 1fr;align-items:center}
+      .trust{gap:12px}
+      .pill{font-size:14px;padding:8px 12px}
+      .counter strong{font-size:18px}
+    }
   </style>
 </head>
 <body>
-  <!-- Nav -->
+  <!-- NAV -->
   <header class="container">
     <nav class="nav" aria-label="Navigation principale">
       <div class="brand">
-        <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(56,189,248,.15);border:1px solid var(--line)">🛡️</span>
+        <!-- Logo : utilise tes fichiers de /assets/img/ -->
+        <img
+          class="brand-logo"
+          src="/assets/img/logo-180.png"
+          srcset="/assets/img/logo-32.png 32w, /assets/img/logo-180.png 180w, /assets/img/logo-512.png 512w"
+          sizes="(max-width: 900px) 28px, 32px"
+          alt="Logo DPO-Lite"
+          onerror="this.onerror=null;this.src='/assets/img/logo-192.png';"
+        />
         <span>DPO-Lite</span>
         <span class="chip">CASL • Loi 25 • e-mail sécurisé</span>
       </div>
@@ -91,9 +124,9 @@
   </header>
 
   <main>
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="container hero">
-      <h1>Conformité CASL &amp; Loi 25 —<br> <span style="opacity:.95">simple, claire, efficace</span></h1>
+      <h1>Conformité CASL &amp; Loi 25 —<br><span style="opacity:.95">simple, claire, efficace</span></h1>
       <p class="lead">
         Mise en place en bonne et due forme (SPF/DKIM/DMARC, registres, checklists) et abonnement Essentiel
         pour votre conformité continue. <strong>Paiements sécurisés par Stripe</strong>.
@@ -101,7 +134,7 @@
       <p class="micro">Prêt à démarrer&nbsp;? Mise en place et premier contact sous 1&nbsp;jour ouvrable.</p>
     </section>
 
-    <!-- Offres -->
+    <!-- OFFRES -->
     <section id="offres" class="container section">
       <div class="cards">
         <!-- Mise en place -->
@@ -175,7 +208,7 @@
         </details>
       </div>
 
-      <!-- Compteur social (mets tes vrais chiffres en éditant data-target) -->
+      <!-- Compteur social -->
       <div class="counters" aria-label="Indicateurs">
         <div class="counter"><strong id="c1" data-target="3">0</strong> rapports mensuels générés</div>
         <div class="counter"><strong id="c2" data-target="1">0</strong> domaines surveillés</div>
@@ -204,7 +237,7 @@
     </div>
   </footer>
 
-  <!-- JS ultra-léger pour le mini compteur -->
+  <!-- JS mini compteur -->
   <script>
     (function(){
       const els=[...document.querySelectorAll('[data-target]')];
