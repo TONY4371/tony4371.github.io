@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DPO-Lite — Conformité CASL & Loi 25</title>
   <meta name="description" content="Conformité opérationnelle CASL & Loi 25 pour PME. Evidence Vault mensuel (PDF + hash), registres, surveillance SPF/DKIM/DMARC. Paiements sécurisés par Stripe.">
+  <meta name="theme-color" content="#0b1220">
+  <!-- Open Graph -->
+  <meta property="og:title" content="DPO-Lite — Conformité CASL & Loi 25">
+  <meta property="og:description" content="Evidence Vault mensuel, registres et surveillance e-mail. Paiements sécurisés par Stripe.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dpolite.ca/">
   <link rel="icon" href="/favicon.ico">
   <style>
     :root{
@@ -18,16 +24,19 @@
       margin:0; color:var(--txt);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
       background:radial-gradient(1200px 800px at 20% -10%,var(--bg2) 0%,var(--bg) 60%), var(--bg);
+      scroll-behavior:smooth;
     }
     a{color:#7dd3fc;text-decoration:none}
     .container{max-width:1080px;margin:0 auto;padding:20px}
     .nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800}
     .chip{font-size:12px;opacity:.9;border:1px solid var(--line);border-radius:999px;padding:6px 10px}
-    .navlinks{display:flex;gap:16px;flex-wrap:wrap;font-weight:600}
+    .navlinks{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-weight:600}
+    .cta-nav{display:inline-block;padding:8px 12px;border-radius:10px;background:var(--ok);color:#0b1220;font-weight:800}
     .hero{padding:16px 0 26px}
     h1{font-size:40px;line-height:1.08;margin:10px 0 10px}
     .lead{color:var(--muted);max-width:840px}
+    .micro{color:var(--muted);margin-top:8px}
     .cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
     @media(min-width:900px){ .cards{grid-template-columns:1fr 1fr} }
     .card{
@@ -56,6 +65,10 @@
     details+details{margin-top:12px}
     summary{cursor:pointer;font-weight:800;outline:none}
     .muted{color:var(--muted)}
+    /* Social counters */
+    .counters{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+    .counter{background:rgba(15,23,42,.7);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+    .counter strong{font-size:18px}
   </style>
 </head>
 <body>
@@ -72,6 +85,7 @@
         <a href="#contact">Contact</a>
         <a href="/legal/conditions.html">Conditions</a>
         <a href="/legal/confidentialite.html">Confidentialité</a>
+        <a class="cta-nav" href="#offres" aria-label="Aller à l’abonnement">S’abonner</a>
       </div>
     </nav>
   </header>
@@ -84,6 +98,7 @@
         Mise en place en bonne et due forme (SPF/DKIM/DMARC, registres, checklists) et abonnement Essentiel
         pour votre conformité continue. <strong>Paiements sécurisés par Stripe</strong>.
       </p>
+      <p class="micro">Prêt à démarrer&nbsp;? Mise en place et premier contact sous 1&nbsp;jour ouvrable.</p>
     </section>
 
     <!-- Offres -->
@@ -128,7 +143,7 @@
         </article>
       </div>
 
-      <!-- Badges de confiance + mini-FAQ -->
+      <!-- Badges de confiance -->
       <div class="trust" aria-label="Badges de confiance">
         <div class="pill">🔒 Paiements sécurisés par Stripe</div>
         <div class="pill">💳 Cartes • Apple Pay • Google Pay • Link</div>
@@ -136,6 +151,7 @@
         <div class="pill">✅ Preuves mensuelles (Evidence Vault)</div>
       </div>
 
+      <!-- Mini-FAQ -->
       <div aria-label="Mini-FAQ">
         <details>
           <summary>Est-ce un avis juridique&nbsp;?</summary>
@@ -157,6 +173,13 @@
             La mise en place prépare vos registres, vos bannières et les surveillances techniques.
           </div>
         </details>
+      </div>
+
+      <!-- Compteur social (mets tes vrais chiffres en éditant data-target) -->
+      <div class="counters" aria-label="Indicateurs">
+        <div class="counter"><strong id="c1" data-target="3">0</strong> rapports mensuels générés</div>
+        <div class="counter"><strong id="c2" data-target="1">0</strong> domaines surveillés</div>
+        <div class="counter"><strong id="c3" data-target="0">0</strong> incidents consignés ce mois-ci</div>
       </div>
     </section>
 
@@ -180,5 +203,23 @@
       <div class="muted">Libellé sur relevé bancaire&nbsp;: <strong>DPOLITE.CA</strong></div>
     </div>
   </footer>
+
+  <!-- JS ultra-léger pour le mini compteur -->
+  <script>
+    (function(){
+      const els=[...document.querySelectorAll('[data-target]')];
+      if(!('IntersectionObserver'in window)||!els.length){ return; }
+      const anim=(el)=>{
+        const target=parseInt(el.dataset.target||'0',10);
+        let n=0; const step=Math.max(1, Math.ceil(target/60));
+        const tick=()=>{ n=Math.min(target,n+step); el.textContent=n; if(n<target) requestAnimationFrame(tick); };
+        tick();
+      };
+      const io=new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ anim(e.target); io.unobserve(e.target); } });
+      },{threshold:0.6});
+      els.forEach(el=>io.observe(el));
+    })();
+  </script>
 </body>
 </html>
