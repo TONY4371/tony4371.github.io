@@ -1,9 +1,99 @@
-<!doctype html><html lang="fr"><meta charset="utf-8">
-<title>Politique de confidentialité — DPO-Lite</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<body style="font-family:system-ui;margin:32px;max-width:900px">
-<h1>Politique de confidentialité</h1>
-<p>Dernière mise à jour : 23 octobre 2025</p>
-<p>Nous collectons les données strictement nécessaires…</p>
-<hr><p><a href="/">← Retour à l’accueil</a></p>
-</body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Politique de confidentialité – DPO-Lite</title>
+  <meta name="description" content="Politique de confidentialité de DPO-Lite (CASL, Loi 25)." />
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#121a2b; --text:#e7edf6; --muted:#9fb0c8;
+      --accent:#5b8cff; --accent-2:#6fe3ff; --border:#24314a;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;background:rgba(11,18,32,.7);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+    nav{max-width:1080px;margin:auto;display:flex;align-items:center;gap:20px;padding:14px 20px}
+    nav .brand{font-weight:700;letter-spacing:.2px}
+    nav a{color:var(--text)}
+    main{max-width:900px;margin:40px auto;padding:0 20px}
+    h1{font-size:2rem;margin:0 0 10px}
+    .muted{color:var(--muted);font-size:.95rem;margin:0 0 24px}
+    section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;margin:18px 0}
+    h2{margin:0 0 10px;font-size:1.2rem}
+    footer{max-width:1080px;margin:40px auto 60px;padding:0 20px;color:var(--muted);border-top:1px solid var(--border);padding-top:18px;text-align:center}
+    .back{display:inline-block;margin-top:14px}
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a class="brand" href="/">DPO-Lite</a>
+    <span style="flex:1"></span>
+    <a href="/">Offres</a>
+    <a href="/legal/conditions.html">Conditions</a>
+    <a href="/legal/confidentialite.html" aria-current="page">Confidentialité</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Politique de confidentialité</h1>
+  <p class="muted">Dernière mise à jour : <strong>23 octobre 2025</strong></p>
+
+  <section>
+    <h2>Données que nous collectons</h2>
+    <ul>
+      <li>Coordonnées professionnelles (nom, e-mail, entreprise) fournies via nos formulaires / paiements.</li>
+      <li>Données de paiement traitées par <strong>Stripe</strong> (nous ne stockons pas les numéros de carte).</li>
+      <li>Données techniques minimales (logs) pour sécurité et performance.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Finalités & base légale</h2>
+    <ul>
+      <li>Fourniture des services (exécution du contrat).</li>
+      <li>Facturation, support et conformité (obligations légales).</li>
+      <li>Amélioration du service (intérêt légitime, proportionné).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Conservation</h2>
+    <p>Les données sont conservées le temps nécessaire aux finalités ci-dessus, puis supprimées ou anonymisées selon nos politiques internes.</p>
+  </section>
+
+  <section>
+    <h2>Destinataires / sous-traitants</h2>
+    <ul>
+      <li><strong>Stripe</strong> : paiements sécurisés et facturation.</li>
+      <li><strong>GitHub Pages</strong> : hébergement de dpolite.ca.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Vos droits</h2>
+    <p>Vous pouvez exercer vos droits d’accès, rectification, portabilité et suppression
+       (Loi 25 / RGPD) à l’adresse <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>DPO-Lite, Québec (QC) — <a href="mailto:support@dpolite.ca">support@dpolite.ca</a></p>
+  </section>
+
+  <a class="back" href="/">← Retour à l’accueil</a>
+</main>
+
+<footer>
+  © <span id="y"></span> DPO-Lite — Québec, QC •
+  <a href="/legal/conditions.html">Conditions</a> •
+  <a href="/legal/confidentialite.html">Confidentialité</a> •
+  <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>
+</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
