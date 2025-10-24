@@ -1,45 +1,142 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr-CA">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Merci — Paiement confirmé</title>
-  <meta name="robots" content="noindex">
-  <link rel="icon" href="/favicon.ico">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Merci — DPO-Lite</title>
+  <meta name="description" content="Confirmation de paiement et prochaines étapes (onboarding) — DPO-Lite" />
+  <link rel="icon" href="/assets/img/favicon.png">
   <style>
-    :root{--bg:#0b1220;--card:#0f172a;--muted:#94a3b8;--txt:#e2e8f0;--ok:#22c55e;}
-    *{box-sizing:border-box} body{margin:0;background:radial-gradient(1200px 800px at 20% -10%,#12203a 0%,#0b1220 60%),var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
-    .wrap{max-width:880px;margin:24px auto;padding:24px}
-    a{color:#7dd3fc;text-decoration:none}
-    .card{background:rgba(15,23,42,.9);border:1px solid rgba(148,163,184,.15);border-radius:14px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    h1{margin:0 0 8px;font-size:28px}
-    p{margin:6px 0 0;color:var(--muted)}
-    .ok{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.4);color:#bef264;border-radius:999px;padding:6px 12px;font-weight:700;margin-bottom:16px}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}
-    .btn{display:inline-block;text-align:center;padding:12px 16px;border-radius:10px;font-weight:700}
-    .btn-primary{background:#38bdf8;color:#0b1220}
-    .btn-ghost{background:transparent;border:1px solid rgba(148,163,184,.25);color:#e2e8f0}
-    footer{margin-top:24px;color:var(--muted);font-size:14px}
+    :root{
+      --bg:#0b1220;       /* fond sombre */
+      --panel:#111a2b;    /* carte */
+      --muted:#9fb3c8;
+      --text:#e8f0ff;
+      --brand:#22c55e;    /* vert bouton */
+      --brand-2:#16a34a;
+      --stroke:#23324a;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+    a{color:#9ad1ff;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:960px;margin:0 auto;padding:24px 16px 64px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .logo{display:flex;gap:10px;align-items:center;color:var(--text);text-decoration:none;font-weight:700}
+    .logo svg{width:22px;height:22px}
+    nav a{margin-left:18px;color:var(--muted)}
+    nav a:hover{color:var(--text)}
+    .hero{margin:24px 0 18px;display:flex;gap:14px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);
+      border:1px solid rgba(34,197,94,.35);padding:8px 12px;border-radius:999px;font-weight:600}
+    .badge svg{width:18px;height:18px}
+    h1{font-size:36px;line-height:1.2;margin:10px 0 8px}
+    .lead{color:var(--muted);margin:0 0 18px}
+
+    .card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;padding:18px}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .btn{display:inline-block;background:var(--brand);color:#00110a;font-weight:700;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.15)}
+    .btn:hover{background:var(--brand-2);text-decoration:none}
+    .btn.outline{background:transparent;color:var(--text);border:1px solid var(--stroke)}
+    .list>li{margin:8px 0}
+    .muted{color:var(--muted)}
+    .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .chip{background:#0b1528;border:1px solid var(--stroke);padding:6px 10px;border-radius:999px;font-size:14px;color:var(--muted)}
+    footer{margin-top:36px;color:var(--muted)}
+    code{background:#0b1528;border:1px solid var(--stroke);padding:2px 6px;border-radius:6px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <a href="/" aria-label="Retour à l’accueil">← Retour à l’accueil</a>
-    <div class="card" style="margin-top:12px">
-      <div class="ok">✅ Paiement confirmé</div>
-      <h1>Merci ! Votre abonnement / paiement a bien été reçu.</h1>
-      <p>Un courriel de confirmation et votre reçu Stripe seront envoyés à l’adresse fournie.</p>
-      <p style="margin-top:8px">Prochaine étape : nous vous contactons sous 1 jour ouvrable pour démarrer la mise en place et partager le <em>kickoff</em>.</p>
+    <header>
+      <a class="logo" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 3l9 6-9 6-9-6 9-6z"/><path d="M3 15l9 6 9-6"/>
+        </svg>
+        DPO-Lite
+      </a>
+      <nav>
+        <a href="/">Accueil</a>
+        <a href="/legal/conditions.html">Conditions</a>
+        <a href="/legal/confidentialite.html">Confidentialité</a>
+      </nav>
+    </header>
 
-      <div class="grid">
-        <a class="btn btn-primary" href="/" >Retour à l’accueil</a>
-        <a class="btn btn-ghost" href="mailto:support@dpolite.ca">Besoin d’aide ? support@dpolite.ca</a>
+    <section class="hero">
+      <span class="badge">
+        <!-- check -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        Paiement confirmé
+      </span>
+    </section>
+
+    <h1>Merci ! Votre commande est confirmée ✅</h1>
+    <p class="lead">Un reçu vient d’être envoyé par e-mail. Pour démarrer rapidement, suivez les étapes ci-dessous.</p>
+
+    <div class="grid">
+      <!-- Colonne étapes -->
+      <div class="card">
+        <h2 style="margin-top:0">Prochaines étapes (5–10&nbsp;min)</h2>
+        <ol class="list">
+          <li>
+            <strong>Formulaire d’onboarding</strong> — informations de base (entreprise, domaines, priorités mois&nbsp;1).<br>
+            <a id="link-form" class="btn" href="#" target="_blank" rel="noopener">Remplir maintenant</a>
+            <div class="muted" style="margin-top:6px">Si le formulaire ne s’ouvre pas, écrivez-nous à
+              <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.
+            </div>
+          </li>
+          <li>
+            <strong>Rendez-vous de cadrage (20–30&nbsp;min)</strong> — on valide le périmètre CASL/Loi&nbsp;25, les accès et l’échéancier.<br>
+            <a id="link-call" class="btn outline" href="#" target="_blank" rel="noopener">Choisir un créneau</a>
+          </li>
+          <li>
+            <strong>Documents d’accès (si requis)</strong> — envoyez les accès e-mail/domaine à
+            <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.
+          </li>
+        </ol>
+
+        <div class="kpi">
+          <span class="chip">Paiements sécurisés par Stripe</span>
+          <span class="chip">Reçus &amp; factures par e-mail</span>
+          <span class="chip">Evidence Vault mensuel</span>
+        </div>
       </div>
 
-      <footer>
-        Astuce : conservez l’e-mail Stripe, il contient vos informations de facturation. Le lien vers le portail client vous sera communiqué par e-mail lorsque nécessaire.
-      </footer>
+      <!-- Colonne infos -->
+      <aside class="card">
+        <h3 style="margin-top:0">Informations</h3>
+        <p class="muted">Référence (si fournie par Stripe) : <code id="ref">—</code></p>
+        <p class="muted">Besoin d’aide ? <a href="mailto:support@dpolite.ca">support@dpolite.ca</a></p>
+        <hr style="border:0;border-top:1px solid var(--stroke);margin:12px 0">
+        <p class="muted">Conditions &amp; Politique :  
+          <a href="/legal/conditions.html">Conditions d’utilisation</a> ·
+          <a href="/legal/confidentialite.html">Confidentialité</a>
+        </p>
+      </aside>
     </div>
+
+    <footer>
+      <p><a href="/">← Retour à l’accueil</a></p>
+    </footer>
   </div>
+
+  <!-- CONFIG À PERSONNALISER : mets tes vrais liens ici -->
+  <script>
+    const FORM_URL = "https://forms.gle/REMPLACE_MOI";      // ← ton Google Forms
+    const CAL_URL  = "https://calendly.com/REMPLACE/30min"; // ← ton Calendly / Cal.com
+
+    // Applique les liens (fallback mailto si pas encore configurés)
+    const lf = document.getElementById('link-form');
+    const lc = document.getElementById('link-call');
+    lf.href = FORM_URL && !FORM_URL.includes("REMPLACE") ? FORM_URL : "mailto:support@dpolite.ca?subject=Onboarding%20DPO-Lite&body=Merci%20d’indiquer%20:%0A-%20Entreprise%20%2F%20Nom%20%0A-%20Domaines%20à%20surveiller%20%0A-%20Contact%20(e-mail%2C%20téléphone)%20%0A-%20Priorités%20mois%201";
+    lc.href = CAL_URL  && !CAL_URL.includes("REMPLACE")  ? CAL_URL  : "mailto:support@dpolite.ca?subject=Prendre%20rendez-vous%20de%20cadrage";
+
+    // Affiche la fin de la référence Checkout si ?session_id=… est présent (Stripe peut l’ajouter)
+    const params = new URLSearchParams(location.search);
+    const sid = params.get("session_id") || params.get("s");
+    const refEl = document.getElementById("ref");
+    if (sid) refEl.textContent = "…"+sid.slice(-8);
+  </script>
 </body>
 </html>
