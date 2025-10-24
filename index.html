@@ -206,42 +206,62 @@
         <div class="pill">📄 Reçus &amp; factures par e-mail</div>
         <div class="pill">✅ Preuves mensuelles (Evidence Vault)</div>
       </div>
-<!-- Ressources : fiche PDF + exemple Evidence Vault + empreinte -->
+<!-- Carte Ressources -->
 <div class="card" style="background:#111a2b;border:1px solid #23324a;border-radius:16px;padding:16px;margin:18px 0">
   <h3 style="margin:0 0 10px">Ressources</h3>
 
   <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <!-- Exemple Evidence Vault (PDF) -->
-    <a class="btn outline"
-       href="/assets/Evidence_Vault_Example.pdf"
-       target="_blank" rel="noopener">
+    <a class="btn outline" href="/assets/Evidence_Vault_Example.pdf" target="_blank" rel="noopener noreferrer">
       Voir un exemple Evidence Vault (PDF)
     </a>
 
-    <!-- Empreinte SHA-256 (fichier) -->
-    <a class="btn outline"
-       href="/assets/Evidence_Vault_Example.sha256"
-       target="_blank" rel="noopener">
+    <a class="btn outline" href="/assets/Evidence_Vault_Example.sha256" target="_blank" rel="noopener noreferrer">
       Empreinte SHA-256 (fichier)
     </a>
 
-    <!-- One-pager marketing -->
-    <a class="btn outline"
-       href="/assets/DPO-Lite_OnePager_v4.pdf"
-       download="DPO-Lite_OnePager_v4.pdf"
-       target="_blank" rel="noopener">
+    <a class="btn outline" href="/assets/DPO-Lite_OnePager_v4.pdf"
+       download="DPO-Lite_OnePager_v4.pdf" target="_blank" rel="noopener noreferrer">
       Télécharger la fiche PDF
     </a>
   </div>
 
-  <!-- Affichage rapide de l’empreinte (facultatif) -->
-  <div style="margin-top:8px;color:#aab1c6;font-size:12px;word-break:break-all">
+  <!-- Ligne SHA + bouton Copier -->
+  <div class="sha-row" style="margin-top:8px;display:flex;gap:8px;align-items:center;color:#aab1c6;font-size:12px;flex-wrap:wrap">
     SHA-256 :
-    <code style="font-size:12px;color:#cfd6e6">
+    <code id="ev-sha" style="font-size:12px;color:#cfd6e6;word-break:break-all">
       6b3d076ad77c826a09f5ba2b2dc11402f6e31352d675ef8e5b683290485583da
     </code>
+    <button class="copy" data-copy-target="#ev-sha"
+            style="padding:4px 8px;border:1px solid #23324a;border-radius:8px;background:#0f1730;color:#e8f0ff;cursor:pointer">
+      Copier
+    </button>
   </div>
+
+  <!-- Aide vérification (optionnel) -->
+  <details style="margin-top:6px;color:#aab1c6;font-size:12px">
+    <summary style="cursor:pointer">Vérifier l’empreinte sur votre ordinateur</summary>
+    <pre style="margin:6px 0 0;color:#cfd6e6;font-size:12px">
+Windows : certutil -hashfile Evidence_Vault_Example.pdf SHA256
+macOS   : shasum -a 256 Evidence_Vault_Example.pdf
+Linux   : sha256sum Evidence_Vault_Example.pdf
+    </pre>
+  </details>
 </div>
+
+<script>
+document.addEventListener('click', (e) => {
+  if (!e.target.matches('[data-copy-target]')) return;
+  const sel = e.target.getAttribute('data-copy-target');
+  const text = document.querySelector(sel)?.textContent.trim();
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const old = e.target.textContent;
+    e.target.textContent = 'Copié !';
+    setTimeout(() => (e.target.textContent = old), 1500);
+  });
+});
+</script>
+
 
       <!-- Mini-FAQ -->
       <div aria-label="Mini-FAQ">
