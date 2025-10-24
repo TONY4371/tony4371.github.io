@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Merci — DPO-Lite</title>
   <meta name="description" content="Confirmation de paiement et prochaines étapes (onboarding) — DPO-Lite" />
-  <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="icon" href="/assets/img/logo-32.png">
   <style>
     :root{
       --bg:#0b1220;       /* fond sombre */
@@ -20,31 +20,40 @@
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
     a{color:#9ad1ff;text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:960px;margin:0 auto;padding:24px 16px 64px}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
+
+    /* Header */
     header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
     .logo{display:flex;gap:10px;align-items:center;color:var(--text);text-decoration:none;font-weight:700}
     .logo svg{width:22px;height:22px}
     nav a{margin-left:18px;color:var(--muted)}
     nav a:hover{color:var(--text)}
+
+    /* Hero / badges */
     .hero{margin:24px 0 18px;display:flex;gap:14px;align-items:center}
     .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);
-      border:1px solid rgba(34,197,94,.35);padding:8px 12px;border-radius:999px;font-weight:600}
+      border:1px solid rgba(34,197,94,.35);padding:8px 12px;border-radius:999px;font-weight:700}
     .badge svg{width:18px;height:18px}
     h1{font-size:36px;line-height:1.2;margin:10px 0 8px}
     .lead{color:var(--muted);margin:0 0 18px}
 
+    /* Layout */
     .card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;padding:18px}
     .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-    .btn{display:inline-block;background:var(--brand);color:#00110a;font-weight:700;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.15)}
-    .btn:hover{background:var(--brand-2);text-decoration:none}
-    .btn.blue{background:#3b82f6;color:#fff;border:1px solid rgba(0,0,0,.15)}
-    .btn.blue:hover{background:#2563eb;text-decoration:none}
-    .list>li{margin:8px 0}
+    .list>li{margin:10px 0}
     .muted{color:var(--muted)}
-    .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .chip{background:#0b1528;border:1px solid var(--stroke);padding:6px 10px;border-radius:999px;font-size:14px;color:var(--muted)}
     footer{margin-top:36px;color:var(--muted)}
-    code{background:#0b1528;border:1px solid var(--stroke);padding:2px 6px;border-radius:6px}
+
+    /* Buttons */
+    .btn{display:inline-block;background:var(--brand);color:#00110a;font-weight:700;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.15)}
+    .btn:hover{background:var(--brand-2);text-decoration:none}
+    .btn.outline{background:transparent;color:var(--text);border:1px solid var(--stroke)}
+    .btn.blue{background:#3b82f6;color:#fff;border:1px solid rgba(0,0,0,.15)}
+    .btn.blue:hover{background:#2563eb;text-decoration:none}
+
+    hr{border:0;border-top:1px solid var(--stroke);margin:12px 0}
     @media (max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -66,7 +75,6 @@
 
     <section class="hero">
       <span class="badge">
-        <!-- check -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
         Paiement confirmé
       </span>
@@ -82,21 +90,18 @@
         <ol class="list">
           <li>
             <strong>Formulaire d’onboarding</strong> — informations de base (entreprise, domaines, priorités mois&nbsp;1).<br>
-           <a id="link-form" class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd-HYOT52eTp3F-kIlaAzNnJAfrkBXMyo6J_3M5ylViAGV1Sg/viewform?usp=header" target="_blank" rel="noopener">
-  Remplir maintenant
-</a>
-            <div class="muted" style="margin-top:6px">Si le formulaire ne s’ouvre pas, écrivez-nous à
-              <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.
+            <a id="link-form" class="btn"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSd-HYOT52eTp3F-kIlaAzNnJAfrkBXMyo6J_3M5ylViAGV1Sg/viewform?usp=header"
+               target="_blank" rel="noopener">Remplir maintenant</a>
+            <div class="muted" style="margin-top:6px">
+              Si le formulaire ne s’ouvre pas, écrivez-nous à <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.
             </div>
           </li>
           <li>
             <strong>Rendez-vous de cadrage (20–30&nbsp;min)</strong> — on valide le périmètre CASL/Loi&nbsp;25, les accès et l’échéancier.<br>
-<a id="link-call" class="btn blue"
-   href="https://calendly.com/antoinemorency7/dpo-lite-30min"
-   target="_blank" rel="noopener">
-  Choisir un créneau
-</a>
-
+            <a id="link-call" class="btn blue"
+               href="https://calendly.com/antoinemorency7/dpo-lite-30min"
+               target="_blank" rel="noopener">Choisir un créneau</a>
           </li>
           <li>
             <strong>Documents d’accès (si requis)</strong> — envoyez les accès e-mail/domaine à
@@ -116,8 +121,8 @@
         <h3 style="margin-top:0">Informations</h3>
         <p class="muted">Référence (si fournie par Stripe) : <code id="ref">—</code></p>
         <p class="muted">Besoin d’aide ? <a href="mailto:support@dpolite.ca">support@dpolite.ca</a></p>
-        <hr style="border:0;border-top:1px solid var(--stroke);margin:12px 0">
-        <p class="muted">Conditions &amp; Politique :  
+        <hr>
+        <p class="muted">Conditions &amp; Politique :
           <a href="/legal/conditions.html">Conditions d’utilisation</a> ·
           <a href="/legal/confidentialite.html">Confidentialité</a>
         </p>
@@ -129,22 +134,11 @@
     </footer>
   </div>
 
-  <!-- CONFIG À PERSONNALISER : mets tes vrais liens ici -->
+  <!-- Petit script pour afficher la fin de la référence Stripe s'il y a ?session_id=... -->
   <script>
-   const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSd-HYOT52eTp3F-kIlaAzNnJAfrkBXMyo6J_3M5ylViAGV1Sg/viewform?usp=header";
-    const CAL_URL  = "https://calendly.com/antoinemorency7/dpo-lite-30min"; // ← ton Calendly / Cal.com
-
-    // Applique les liens (fallback mailto si pas encore configurés)
-    const lf = document.getElementById('link-form');
-    const lc = document.getElementById('link-call');
-    lf.href = FORM_URL && !FORM_URL.includes("REMPLACE") ? FORM_URL : "mailto:support@dpolite.ca?subject=Onboarding%20DPO-Lite&body=Merci%20d’indiquer%20:%0A-%20Entreprise%20%2F%20Nom%20%0A-%20Domaines%20à%20surveiller%20%0A-%20Contact%20(e-mail%2C%20téléphone)%20%0A-%20Priorités%20mois%201";
-    lc.href = CAL_URL  && !CAL_URL.includes("REMPLACE")  ? CAL_URL  : "mailto:support@dpolite.ca?subject=Prendre%20rendez-vous%20de%20cadrage";
-
-    // Affiche la fin de la référence Checkout si ?session_id=… est présent (Stripe peut l’ajouter)
     const params = new URLSearchParams(location.search);
     const sid = params.get("session_id") || params.get("s");
-    const refEl = document.getElementById("ref");
-    if (sid) refEl.textContent = "…"+sid.slice(-8);
+    if (sid) document.getElementById("ref").textContent = "…" + sid.slice(-8);
   </script>
 </body>
 </html>
