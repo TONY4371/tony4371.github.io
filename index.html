@@ -17,10 +17,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dpolite.ca/">
   <meta property="og:image" content="/assets/img/social-card.png?v=2">
-<!-- Plausible Analytics -->
-<script defer data-domain="dpolite.ca"
-  src="https://plausible.io/js/script.outbound-links.file-downloads.js"></script>
-  
+
+  <!-- Plausible Analytics (pages vues + clics sortants + téléchargements de fichiers) -->
+  <script defer data-domain="dpolite.ca"
+    src="https://plausible.io/js/script.outbound-links.file-downloads.js"></script>
+
   <style>
     :root{
       --bg:#0b1220; --bg2:#12203a; --card:#0f172a; --txt:#e2e8f0; --muted:#94a3b8;
@@ -73,7 +74,10 @@
     li{margin:6px 0}
 
     /* Boutons */
-    .btn{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:900;text-align:center;border:1px solid transparent;width:100%;transition:.15s ease}
+    .btn{
+      display:inline-block; padding:12px 16px; border-radius:12px; font-weight:900; text-align:center;
+      border:1px solid transparent; width:100%; transition:.15s ease; min-height:48px; /* touch target */
+    }
     .btn + .btn{margin-left:0}
     .btn-primary{background:var(--primary);color:#0b1220}
     .btn-ok{background:var(--ok);color:#0b1220}
@@ -92,7 +96,6 @@
     details+details{margin-top:10px}
     summary{cursor:pointer;font-weight:800;outline:none;position:relative;padding-right:28px}
     details > div{line-height:1.5}
-    /* flèche d’ouverture */
     summary::after{
       content:"▾";position:absolute;right:8px;top:50%;transform:translateY(-50%) rotate(0deg);
       transition:transform .2s ease;opacity:.8;
@@ -173,14 +176,20 @@
             <li>Evidence Vault (PDF + hash) inclus</li>
           </ul>
           <div class="btn-row">
-            <a class="btn btn-primary" target="_blank" rel="noopener"
+            <!-- CTA UNIQUE + suivi Plausible -->
+            <a id="cta-setup"
+               class="btn btn-primary plausible-event-name=Pay+Setup+Click"
                href="https://buy.stripe.com/14A3cx3un1GBe2f5SWfIs01"
+               target="_blank" rel="noopener"
                aria-label="Payer la mise en place via Stripe">
               Payer la mise en place
             </a>
-            <span class="muted" style="align-self:center">Taxes non perçues pour le moment.</span>
+            <span class="muted" style="align-self:center">
+              Redirection après paiement vers <code>/merci.html</code>. Taxes non perçues pour le moment.
+            </span>
           </div>
         </article>
+
         <!-- Essentiel -->
         <article class="card" aria-labelledby="essentiel">
           <h3 id="essentiel">Essentiel (CASL &amp; Loi 25)</h3>
@@ -191,92 +200,88 @@
             <li>surveillance e-mail + <strong>support</strong> (≤ 3 demandes / mois)</li>
           </ul>
           <div class="btn-row">
-            <a class="btn btn-ok" target="_blank" rel="noopener"
+            <!-- CTA UNIQUE + suivi Plausible -->
+            <a id="cta-subscribe"
+               class="btn btn-ok plausible-event-name=Subscribe+Click"
                href="https://buy.stripe.com/6oU9AV7KDetn3nBbdgfIs00"
+               target="_blank" rel="noopener"
                aria-label="S’abonner au plan Essentiel via Stripe">
               S’abonner maintenant
             </a>
-            <span class="muted" style="align-self:center">Autopay activé. Taxes non perçues pour le moment.</span>
+            <span class="muted" style="align-self:center">
+              Redirection après paiement vers <code>/merci.html</code>. Autopay activé. Taxes non perçues pour le moment.
+            </span>
           </div>
         </article>
       </div>
-      <!-- Badges de confiance -->
+    </section>
+
+    <!-- Badges de confiance -->
+    <section class="container">
       <div class="trust" aria-label="Badges de confiance">
         <div class="pill">🔒 Paiements sécurisés par Stripe</div>
         <div class="pill">💳 Cartes • Apple Pay • Google Pay • Link</div>
         <div class="pill">📄 Reçus &amp; factures par e-mail</div>
         <div class="pill">✅ Preuves mensuelles (Evidence Vault)</div>
       </div>
-<!-- Ressources -->
-<div class="card" style="background:#111a2b;border:1px solid #23324a;border-radius:16px;padding:16px;margin:18px 0">
-  <h3 style="margin:0 0 10px">Ressources</h3>
+    </section>
 
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <a class="btn outline" href="/assets/Evidence_Vault_Example.pdf" target="_blank" rel="noopener noreferrer">
-      Voir un exemple Evidence Vault (PDF)
-    </a>
+    <!-- Ressources -->
+    <section class="container section" aria-label="Ressources">
+      <div class="card" style="background:#111a2b;border:1px solid #23324a;border-radius:16px;padding:16px;margin:0">
+        <h3 style="margin:0 0 10px">Ressources</h3>
 
-    <a class="btn outline" href="/assets/Evidence_Vault_Example.sha256" target="_blank" rel="noopener noreferrer">
-      Empreinte SHA-256 (fichier)
-    </a>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-ghost" href="/assets/Evidence_Vault_Example.pdf" target="_blank" rel="noopener noreferrer">
+            Voir un exemple Evidence Vault (PDF)
+          </a>
 
-    <a class="btn outline" href="/assets/DPO-Lite_OnePager_v4.pdf"
-       download="DPO-Lite_OnePager_v4.pdf" target="_blank" rel="noopener noreferrer">
-      Télécharger la fiche PDF
-    </a>
-  </div>
+          <a class="btn btn-ghost" href="/assets/Evidence_Vault_Example.sha256" target="_blank" rel="noopener noreferrer">
+            Empreinte SHA-256 (fichier)
+          </a>
 
-  <!-- Ligne SHA + bouton Copier -->
-  <div style="margin-top:8px;display:flex;gap:8px;align-items:center;color:#aab1c6;font-size:12px;flex-wrap:wrap">
-    SHA-256 :
-    <code id="ev-sha" style="font-size:12px;color:#cfd6e6;word-break:break-all">
-      6b3d076ad77c826a09f5ba2b2dc11402f6e31352d675ef8e5b683290485583da
-    </code>
-    <button class="btn outline" data-copy-target="#ev-sha"
-            style="padding:4px 8px;border-radius:8px;font-size:12px;line-height:1">
-      Copier
-    </button>
-  </div>
+          <a class="btn btn-ghost" href="/assets/DPO-Lite_OnePager_v4.pdf"
+             download="DPO-Lite_OnePager_v4.pdf" target="_blank" rel="noopener noreferrer">
+            Télécharger la fiche PDF
+          </a>
+        </div>
 
-  <!-- Aide vérification (repliée par défaut) -->
-  <details style="margin-top:10px">
-    <summary style="color:#aab1c6;font-size:12px;cursor:pointer">
-      Vérifier l’empreinte sur votre ordinateur
-    </summary>
-    <pre style="margin:8px 0 0;color:#cfd6e6;font-size:12px;white-space:pre-wrap;word-break:break-word;background:#0f1730;border:1px solid #23324a;border-radius:10px;padding:10px">
+        <!-- Ligne SHA + bouton Copier -->
+        <div style="margin-top:8px;display:flex;gap:8px;align-items:center;color:#aab1c6;font-size:12px;flex-wrap:wrap">
+          SHA-256 :
+          <code id="ev-sha" style="font-size:12px;color:#cfd6e6;word-break:break-all">
+            6b3d076ad77c826a09f5ba2b2dc11402f6e31352d675ef8e5b683290485583da
+          </code>
+          <button class="btn btn-ghost" data-copy-target="#ev-sha"
+                  style="padding:4px 8px;border-radius:8px;font-size:12px;line-height:1">
+            Copier
+          </button>
+        </div>
+
+        <!-- Aide vérification (repliée par défaut) -->
+        <details style="margin-top:10px">
+          <summary style="color:#aab1c6;font-size:12px;cursor:pointer">
+            Vérifier l’empreinte sur votre ordinateur
+          </summary>
+          <pre style="margin:8px 0 0;color:#cfd6e6;font-size:12px;white-space:pre-wrap;word-break:break-word;background:#0f1730;border:1px solid #23324a;border-radius:10px;padding:10px">
 Windows : certutil -hashfile Evidence_Vault_Example.pdf SHA256
 macOS   : shasum -a 256 Evidence_Vault_Example.pdf
 Linux   : sha256sum Evidence_Vault_Example.pdf
-    </pre>
-  </details>
-</div>
+          </pre>
+        </details>
+      </div>
 
-<script>
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-copy-target]');
-  if (!btn) return;
-  const sel = btn.getAttribute('data-copy-target');
-  const text = document.querySelector(sel)?.textContent.trim();
-  if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-    const old = btn.textContent;
-    btn.textContent = '✅ Copié';
-    setTimeout(() => (btn.textContent = old), 1400);
-  });
-});
-</script>
+      <style>
+        /* petit soin mobile : mise en colonne si l’écran est étroit */
+        @media (max-width: 560px){
+          .card > div[style*="display:flex"] { flex-direction:column; }
+          .card a.btn { width:100%; text-align:center; }
+        }
+      </style>
+    </section>
 
-<style>
-/* petit soin mobile : mise en colonne si l’écran est étroit */
-@media (max-width: 560px){
-  .card > div[style*="display:flex"] { flex-direction:column; }
-  .card a.btn { width:100%; text-align:center; }
-}
-</style>
-
-
-
-      <!-- Mini-FAQ -->
+    <!-- Mini-FAQ + Compteurs -->
+    <section class="container section" aria-label="Mini-FAQ et indicateurs">
       <div aria-label="Mini-FAQ">
         <details>
           <summary>Est-ce un avis juridique&nbsp;?</summary>
@@ -300,7 +305,6 @@ document.addEventListener('click', (e) => {
         </details>
       </div>
 
-      <!-- Compteur social -->
       <div class="counters" aria-label="Indicateurs">
         <div class="counter"><strong id="c1" data-target="3">0</strong> rapports mensuels générés</div>
         <div class="counter"><strong id="c2" data-target="1">0</strong> domaines surveillés</div>
@@ -329,12 +333,12 @@ document.addEventListener('click', (e) => {
     </div>
   </footer>
 
-  <!-- JS mini compteur + sticky nav -->
+  <!-- JS mini compteur + sticky nav + bouton Copier -->
   <script>
     // Mini compteur sur les indicateurs
     (function(){
       const els=[...document.querySelectorAll('[data-target]')];
-      if(!('IntersectionObserver'in window)||!els.length){ return; }
+      if(!('IntersectionObserver' in window) || !els.length){ return; }
       const anim=(el)=>{
         const target=parseInt(el.dataset.target||'0',10);
         let n=0; const step=Math.max(1, Math.ceil(target/60));
@@ -354,6 +358,20 @@ document.addEventListener('click', (e) => {
       onScroll();
       addEventListener('scroll', onScroll, {passive:true});
     })();
+
+    // Bouton "Copier" (SHA-256)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-copy-target]');
+      if (!btn) return;
+      const sel = btn.getAttribute('data-copy-target');
+      const text = document.querySelector(sel)?.textContent.trim();
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.textContent;
+        btn.textContent = '✅ Copié';
+        setTimeout(() => (btn.textContent = old), 1400);
+      });
+    });
   </script>
 </body>
 </html>
