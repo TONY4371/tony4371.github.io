@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Merci — DPO-Lite</title>
   <meta name="description" content="Confirmation de paiement et prochaines étapes (onboarding) — DPO-Lite" />
+  <!-- Évite que la page de remerciement soit indexée -->
+  <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/assets/img/logo-32.png">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ET3ZQQTLWQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ET3ZQQTLWQ', { 'anonymize_ip': true });
+  </script>
+
   <style>
     :root{
       --bg:#0b1220;       /* fond sombre */
@@ -134,11 +146,21 @@
     </footer>
   </div>
 
-  <!-- Petit script pour afficher la fin de la référence Stripe s'il y a ?session_id=... -->
+  <!-- Référence Stripe abrégée si ?session_id=... -->
   <script>
     const params = new URLSearchParams(location.search);
     const sid = params.get("session_id") || params.get("s");
     if (sid) document.getElementById("ref").textContent = "…" + sid.slice(-8);
+  </script>
+
+  <!-- Conversion GA4 à l'arrivée sur la page -->
+  <script>
+    if (typeof gtag === 'function') {
+      gtag('event', 'purchase_confirmed', {
+        event_category: 'Checkout',
+        event_label: (location.search || '').slice(0, 100) // ex. ?source=stripe ou ?session_id=...
+      });
+    }
   </script>
 </body>
 </html>
