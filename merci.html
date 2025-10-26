@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Merci — DPO-Lite</title>
   <meta name="description" content="Confirmation de paiement et prochaines étapes (onboarding) — DPO-Lite" />
-  <!-- Évite que la page de remerciement soit indexée -->
+  <!-- Évite l’indexation de la page de remerciement -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/assets/img/logo-32.png">
 
@@ -153,14 +153,27 @@
     if (sid) document.getElementById("ref").textContent = "…" + sid.slice(-8);
   </script>
 
-  <!-- Conversion GA4 à l'arrivée sur la page -->
+  <!-- Conversion GA4 robuste à l'arrivée sur la page -->
   <script>
-    if (typeof gtag === 'function') {
-      gtag('event', 'purchase_confirmed', {
-        event_category: 'Checkout',
-        event_label: (location.search || '').slice(0, 100) // ex. ?source=stripe ou ?session_id=...
-      });
-    }
+    (function () {
+      // Empêche un double envoi si on recharge
+      if (sessionStorage.getItem('pc_sent')) return;
+
+      function fire() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'purchase_confirmed', {
+            event_category: 'Checkout',
+            event_label: (location.search || '').slice(0, 100) // ex. ?source=stripe ou ?session_id=...
+          });
+          sessionStorage.setItem('pc_sent', '1');
+        }
+      }
+
+      // Envoi immédiat + 2 retries pour capturer tous les cas de chargement
+      setTimeout(fire, 0);
+      setTimeout(fire, 700);
+      setTimeout(fire, 1500);
+    })();
   </script>
 </body>
 </html>
