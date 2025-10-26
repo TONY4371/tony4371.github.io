@@ -141,6 +141,43 @@
       .btn-row{grid-template-columns:auto 1fr;align-items:center}
       .counter strong{font-size:18px}
     }
+
+    /* --- Mobile header polish (≤ 640px) --- */
+    @media (max-width: 640px) {
+      .brand .chip { display: none; }                 /* cache la pastille longue */
+      .brand-logo { width: 32px; height: 32px; }
+
+      .nav { gap: 10px; }
+      .navlinks {
+        width: 100%;
+        flex-wrap: nowrap;                            /* évite le retour à la ligne */
+        overflow-x: auto;                             /* permet de défiler si trop long */
+        white-space: nowrap;
+        gap: 8px;
+        padding: 6px 0 2px;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+      }
+      .navlinks::-webkit-scrollbar { display: none; }
+      .navlinks a {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-weight: 700;
+        scroll-snap-align: start;
+      }
+      .cta-nav {
+        background: var(--ok);
+        color: #0b1220;
+        padding: 8px 12px;
+        flex: 0 0 auto;                               /* ne s’étire pas */
+      }
+
+      header.sticky .brand-logo { width: 30px; height: 30px; }
+      header.sticky .nav { padding: 4px 0 6px; }
+    }
   </style>
 </head>
 <body>
@@ -255,7 +292,7 @@
             Voir un exemple Evidence Vault (PDF)
           </a>
 
-        <a class="btn btn-ghost" href="/assets/Evidence_Vault_Example.sha256" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-ghost" href="/assets/Evidence_Vault_Example.sha256" target="_blank" rel="noopener noreferrer">
             Empreinte SHA-256 (fichier)
           </a>
 
@@ -277,7 +314,6 @@
           </button>
         </div>
 
-        <!-- Aide vérification (repliée par défaut) -->
         <details style="margin-top:10px">
           <summary style="color:#aab1c6;font-size:12px;cursor:pointer">
             Vérifier l’empreinte sur votre ordinateur
