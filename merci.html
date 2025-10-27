@@ -7,85 +7,55 @@
   <meta name="description" content="Confirmation de paiement et prochaines étapes (onboarding) — DPO-Lite" />
   <link rel="icon" href="/assets/img/logo-32.png">
 
-  <!-- GA4 (ne pas dupliquer l'événement d'achat si règle 'sans code' déjà créée dans GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ET3ZQGTLWQ"></script>
+  <!-- GA4 (ID fourni) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ET3ZQQTLWQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-ET3ZQGTLWQ'); // Page view + paramètres automatiques
-
-    // --- OPTIONNEL (LAISSE COMMENTÉ pour éviter le double comptage) ---
-    // Si tu supprimes la règle "événement sans code" dans GA4 et veux envoyer ici l'achat :
-    /*
-    (function() {
-      const qs = new URLSearchParams(location.search);
-      const plan = (qs.get('p') || 'unknown'); // ex: setup | essentiel
-      // Valeur indicative : 300 CAD (adapter si besoin)
-      gtag('event', 'purchase_confirmed_key', {
-        value: 300,
-        currency: 'CAD',
-        plan: plan
-      });
-    })();
-    */
+    /* debug_mode: true pour vérifier en Temps réel (peut être retiré plus tard) */
+    gtag('config', 'G-ET3ZQQTLWQ', { debug_mode: true });
   </script>
 
   <style>
     :root{
-      --bg:#0b1220;       /* fond */
-      --panel:#111a2b;    /* carte */
-      --muted:#9fb3c8;
-      --text:#e8f0ff;
-      --brand:#22c55e;    /* vert bouton */
-      --brand-2:#16a34a;
-      --stroke:#23324a;
-      --blue:#3b82f6;
+      --bg:#0b1220; --panel:#111a2b; --text:#e8f0ff; --muted:#9fb3c8;
+      --stroke:#23324a; --brand:#22c55e; --brand-2:#16a34a; --blue:#3b82f6;
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
     a{color:#9ad1ff;text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
-
-    /* Header */
     header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .logo{display:flex;gap:10px;align-items:center;color:var(--text);text-decoration:none;font-weight:700}
+    .logo{display:flex;gap:10px;align-items:center;color:var(--text);font-weight:700}
     .logo svg{width:22px;height:22px}
     nav a{margin-left:18px;color:var(--muted)}
     nav a:hover{color:var(--text)}
-
-    /* Hero / badges */
-    .hero{margin:24px 0 18px;display:flex;gap:14px;align-items:center}
     .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.1);
       border:1px solid rgba(34,197,94,.35);padding:8px 12px;border-radius:999px;font-weight:700}
     .badge svg{width:18px;height:18px}
-    h1{font-size:36px;line-height:1.2;margin:10px 0 8px}
+    h1{font-size:32px;line-height:1.2;margin:12px 0 8px}
     .lead{color:var(--muted);margin:0 0 18px}
-
-    /* Layout */
-    .card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;padding:18px}
     .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;padding:18px}
     .list>li{margin:10px 0}
-    .muted{color:var(--muted)}
+    .btn{display:inline-block;background:var(--brand);color:#00110a;font-weight:700;
+      padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.15)}
+    .btn:hover{background:var(--brand-2);text-decoration:none}
+    .btn.blue{background:var(--blue);color:#fff}
+    .btn.blue:hover{filter:brightness(0.95)}
     .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .chip{background:#0b1528;border:1px solid var(--stroke);padding:6px 10px;border-radius:999px;font-size:14px;color:var(--muted)}
     footer{margin-top:36px;color:var(--muted)}
-
-    /* Buttons */
-    .btn{display:inline-block;background:var(--brand);color:#00110a;font-weight:700;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.15)}
-    .btn:hover{background:var(--brand-2);text-decoration:none}
-    .btn.outline{background:transparent;color:var(--text);border:1px solid var(--stroke)}
-    .btn.blue{background:var(--blue);color:#fff;border:1px solid rgba(0,0,0,.15)}
-    .btn.blue:hover{filter:brightness(1.05);}
-
+    code.small{font-size:12px;color:#a7b3c8}
     hr{border:0;border-top:1px solid var(--stroke);margin:12px 0}
-
     @media (max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div class="wrap">
+    <!-- Header -->
     <header>
       <a class="logo" href="/">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -100,36 +70,39 @@
       </nav>
     </header>
 
-    <section class="hero">
-      <span class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-        Paiement confirmé
-      </span>
-    </section>
+    <!-- Hero -->
+    <div class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Paiement confirmé
+    </div>
 
     <h1>Merci ! Votre commande est confirmée ✅</h1>
     <p class="lead">Un reçu vient d’être envoyé par e-mail. Pour démarrer rapidement, suivez les étapes ci-dessous.</p>
 
     <div class="grid">
-      <!-- Colonne étapes -->
-      <div class="card">
+      <!-- Étapes -->
+      <section class="card">
         <h2 style="margin-top:0">Prochaines étapes (5–10&nbsp;min)</h2>
         <ol class="list">
           <li>
             <strong>Formulaire d’onboarding</strong> — informations de base (entreprise, domaines, priorités mois&nbsp;1).<br>
-            <a id="link-form" class="btn"
-               href="https://docs.google.com/forms/d/e/1FAIpQLSd-HYOT52eTp3F-kIlaAzNnJAfrkBXMyo6J_3M5ylViAGV1Sg/viewform?usp=header"
-               target="_blank" rel="noopener">Remplir maintenant</a>
-            <div class="muted" style="margin-top:6px">
+            <a id="btn-form" class="btn" target="_blank" rel="noopener"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSd-HYOT52eTp3F-kIlaAzNnJAfrkBXMyo6J_3M5ylViAGV1Sg/viewform?usp=header">
+              Remplir maintenant
+            </a>
+            <div style="color:var(--muted);margin-top:6px">
               Si le formulaire ne s’ouvre pas, écrivez-nous à <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.
             </div>
           </li>
+
           <li>
             <strong>Rendez-vous de cadrage (20–30&nbsp;min)</strong> — on valide le périmètre CASL/Loi&nbsp;25, les accès et l’échéancier.<br>
-            <a id="link-call" class="btn blue"
-               href="https://calendly.com/antoinemorency7/dpo-lite-30min"
-               target="_blank" rel="noopener">Choisir un créneau</a>
+            <a id="btn-cal" class="btn blue" target="_blank" rel="noopener"
+               href="https://calendly.com/antoinemorency7/dpo-lite-30min">
+              Choisir un créneau
+            </a>
           </li>
+
           <li>
             <strong>Documents d’accès (si requis)</strong> — envoyez les accès e-mail/domaine à
             <a href="mailto:support@dpolite.ca">support@dpolite.ca</a>.
@@ -141,15 +114,15 @@
           <span class="chip">Reçus &amp; factures par e-mail</span>
           <span class="chip">Evidence Vault mensuel</span>
         </div>
-      </div>
+      </section>
 
-      <!-- Colonne infos -->
+      <!-- Infos -->
       <aside class="card">
         <h3 style="margin-top:0">Informations</h3>
-        <p class="muted">Référence (si fournie par Stripe) : <code id="ref">—</code></p>
-        <p class="muted">Besoin d’aide ? <a href="mailto:support@dpolite.ca">support@dpolite.ca</a></p>
+        <p style="color:var(--muted)">Référence (si fournie par Stripe) : <code id="ref" class="small">—</code></p>
+        <p style="color:var(--muted)">Besoin d’aide ? <a href="mailto:support@dpolite.ca">support@dpolite.ca</a></p>
         <hr>
-        <p class="muted">Conditions &amp; Politique :
+        <p style="color:var(--muted)">Conditions &amp; Politique :
           <a href="/legal/conditions.html">Conditions d’utilisation</a> ·
           <a href="/legal/confidentialite.html">Confidentialité</a>
         </p>
@@ -161,17 +134,59 @@
     </footer>
   </div>
 
- <!-- Affiche la fin de la référence Stripe s’il y a ?session_id=... -->
-<script>
-  (function(){
-    const params = new URLSearchParams(location.search);
-    const sid = params.get("session_id") || params.get("s");
-    if (sid) {
-      const refEl = document.getElementById("ref");
-      if (refEl) refEl.textContent = "…" + String(sid).slice(-8);
-    }
-  })();
-</script>
+  <!-- Tracking léger / événements GA4 -->
+  <script>
+    (function () {
+      const qs = new URLSearchParams(location.search);
+      const sid = qs.get('session_id') || qs.get('s');
+      if (sid) {
+        // Petit affichage de la fin de l’ID Stripe si présent
+        const el = document.getElementById('ref');
+        if (el) el.textContent = '…' + String(sid).slice(-8);
+      }
+
+      // 1) Marquer la visite de la page "merci" comme confirmation
+      function fireConfirmed(){
+        gtag('event', 'purchase_confirmed', {
+          page_location: location.href
+        });
+      }
+      fireConfirmed();
+      setTimeout(fireConfirmed, 700);
+      setTimeout(fireConfirmed, 1500);
+
+      // 2) Déduire quel produit a été acheté via ?p=setup | ?p=subscribe
+      const p = qs.get('p'); // "setup" ou "subscribe"
+      const map = { setup: 'purchase_setup', subscribe: 'purchase_essential' };
+      const ev = map[p];
+
+      if (ev) {
+        const value = 300;    // adapte si le montant diffère
+        const currency = 'CAD';
+
+        const payload = {
+          value, currency,
+          page_location: location.href,
+          // event_id pour limiter les doublons (non PII)
+          event_id: ev + '_' + Date.now()
+        };
+
+        const fire = () => gtag('event', ev, payload);
+        fire();
+        setTimeout(fire, 700);
+        setTimeout(fire, 1500);
+      }
+
+      // 3) Petits événements de clic pour les deux boutons (optionnels)
+      const $form = document.getElementById('btn-form');
+      const $cal  = document.getElementById('btn-cal');
+      if ($form) $form.addEventListener('click', () => {
+        gtag('event', 'click_onboarding_form', { page_location: location.href });
+      });
+      if ($cal) $cal.addEventListener('click', () => {
+        gtag('event', 'click_calendly', { page_location: location.href });
+      });
+    })();
+  </script>
 </body>
 </html>
-
