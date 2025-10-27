@@ -161,17 +161,17 @@
     </footer>
   </div>
 
-  <!-- Affiche la fin de la référence Stripe s’il y a ?session_id=... -->
-  <script>
-    (function(){
-      const params = new URLSearchParams(location.search);
-      const sid = params.get("session_id") || params.get("s");
-      if (sid) {
-        const short = "…" + String(sid).slice(-8);
-        const refEl = document.getElementById("ref");
-        if (refEl) refEl.textContent = short;
-      }
-    })();
-  </script>
+ <!-- Affiche la fin de la référence Stripe s’il y a ?session_id=... -->
+<script>
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const sid = params.get("session_id") || params.get("s");
+    if (sid) {
+      const refEl = document.getElementById("ref");
+      if (refEl) refEl.textContent = "…" + String(sid).slice(-8);
+    }
+  })();
+</script>
 </body>
 </html>
+
