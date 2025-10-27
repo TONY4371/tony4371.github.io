@@ -168,6 +168,18 @@
           sessionStorage.setItem('pc_sent', '1');
         }
       }
+<script>
+  (function() {
+    const qs = new URLSearchParams(location.search);
+    const plan = qs.get('p') || 'unknown'; // 'setup' ou 'essentiel'
+    // Si tu veux envoyer un event explicite en plus de la règle "sans code" :
+    gtag('event', 'purchase_confirmed_key', {
+      value: 300,
+      currency: 'CAD',
+      plan: plan   // param utile pour tes rapports
+    });
+  })();
+</script>
 
       // Envoi immédiat + 2 retries pour capturer tous les cas de chargement
       setTimeout(fire, 0);
