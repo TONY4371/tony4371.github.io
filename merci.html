@@ -5,28 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Merci — DPO-Lite</title>
   <meta name="description" content="Confirmation de paiement et prochaines étapes (onboarding) — DPO-Lite" />
-  <!-- Évite l’indexation de la page de remerciement -->
-  <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/assets/img/logo-32.png">
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ET3ZQQTLWQ"></script>
+  <!-- GA4 (ne pas dupliquer l'événement d'achat si règle 'sans code' déjà créée dans GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ET3ZQGTLWQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-ET3ZQQTLWQ', { 'anonymize_ip': true });
+    gtag('config', 'G-ET3ZQGTLWQ'); // Page view + paramètres automatiques
+
+    // --- OPTIONNEL (LAISSE COMMENTÉ pour éviter le double comptage) ---
+    // Si tu supprimes la règle "événement sans code" dans GA4 et veux envoyer ici l'achat :
+    /*
+    (function() {
+      const qs = new URLSearchParams(location.search);
+      const plan = (qs.get('p') || 'unknown'); // ex: setup | essentiel
+      // Valeur indicative : 300 CAD (adapter si besoin)
+      gtag('event', 'purchase_confirmed_key', {
+        value: 300,
+        currency: 'CAD',
+        plan: plan
+      });
+    })();
+    */
   </script>
 
   <style>
     :root{
-      --bg:#0b1220;       /* fond sombre */
+      --bg:#0b1220;       /* fond */
       --panel:#111a2b;    /* carte */
       --muted:#9fb3c8;
       --text:#e8f0ff;
       --brand:#22c55e;    /* vert bouton */
       --brand-2:#16a34a;
       --stroke:#23324a;
+      --blue:#3b82f6;
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
@@ -62,10 +76,11 @@
     .btn{display:inline-block;background:var(--brand);color:#00110a;font-weight:700;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.15)}
     .btn:hover{background:var(--brand-2);text-decoration:none}
     .btn.outline{background:transparent;color:var(--text);border:1px solid var(--stroke)}
-    .btn.blue{background:#3b82f6;color:#fff;border:1px solid rgba(0,0,0,.15)}
-    .btn.blue:hover{background:#2563eb;text-decoration:none}
+    .btn.blue{background:var(--blue);color:#fff;border:1px solid rgba(0,0,0,.15)}
+    .btn.blue:hover{filter:brightness(1.05);}
 
     hr{border:0;border-top:1px solid var(--stroke);margin:12px 0}
+
     @media (max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -146,46 +161,16 @@
     </footer>
   </div>
 
-  <!-- Référence Stripe abrégée si ?session_id=... -->
+  <!-- Affiche la fin de la référence Stripe s’il y a ?session_id=... -->
   <script>
-    const params = new URLSearchParams(location.search);
-    const sid = params.get("session_id") || params.get("s");
-    if (sid) document.getElementById("ref").textContent = "…" + sid.slice(-8);
-  </script>
-
-  <!-- Conversion GA4 robuste à l'arrivée sur la page -->
-  <script>
-    (function () {
-      // Empêche un double envoi si on recharge
-      if (sessionStorage.getItem('pc_sent')) return;
-
-      function fire() {
-        if (typeof gtag === 'function') {
-          gtag('event', 'purchase_confirmed', {
-            event_category: 'Checkout',
-            event_label: (location.search || '').slice(0, 100) // ex. ?source=stripe ou ?session_id=...
-          });
-          sessionStorage.setItem('pc_sent', '1');
-        }
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const sid = params.get("session_id") || params.get("s");
+      if (sid) {
+        const short = "…" + String(sid).slice(-8);
+        const refEl = document.getElementById("ref");
+        if (refEl) refEl.textContent = short;
       }
-      
-<script>
-  (function() {
-    const qs = new URLSearchParams(location.search);
-    const plan = qs.get('p') || 'unknown'; // 'setup' ou 'essentiel'
-    // Si tu veux envoyer un event explicite en plus de la règle "sans code" :
-    gtag('event', 'purchase_confirmed_key', {
-      value: 300,
-      currency: 'CAD',
-      plan: plan   // param utile pour tes rapports
-    });
-  })();
-</script>
-
-      // Envoi immédiat + 2 retries pour capturer tous les cas de chargement
-      setTimeout(fire, 0);
-      setTimeout(fire, 700);
-      setTimeout(fire, 1500);
     })();
   </script>
 </body>
